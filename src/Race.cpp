@@ -50,6 +50,14 @@ void Race::update(){
 
 void Race::draw() {
     collisionMap.draw(0,0);
+    
+    // finish line
+    ofPushStyle();
+    ofSetColor(255, 0, 0);
+    ofSetLineWidth(2);
+    ofDrawLine(398, 583, 398, 707);
+    ofPopStyle();
+    
     bike.drawDebug();
 }
 
@@ -68,6 +76,7 @@ void Race::updateRanking(){
     float percent = color.r / 255.f;
     
     // check if line crossed
+    // TODO: use line intersection for more robust detection
     if (player.lapPercent == 1.0 && percent == 0.0) {
         player.completedLaps += 1;
     }
@@ -84,7 +93,7 @@ string Race::getElapsedTimeString() {
     int minutes = seconds / 60;
     int tens = (millis - seconds * 1000) / 10;
     string minutesTXT = ofToString(minutes, 2, '0');
-    string secondsTXT = ofToString(seconds, 2, '0');
+    string secondsTXT = ofToString(seconds - minutes*60, 2, '0');
     string tensTXT = ofToString(tens, 2, '0');
     
     return minutesTXT + ":" + secondsTXT + ":" + tensTXT;
