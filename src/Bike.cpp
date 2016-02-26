@@ -17,8 +17,8 @@ Bike::Bike(ofVec2f _position, float _rotation){
     speed = 0;
     
     parameters.add( acceleration.set("acceleration", 0.4, 0.0, 2.0) );
-    parameters.add( friction.set("friction", 0.9, 0.5, 0.999) );
-    parameters.add( maxSpeed.set("max speed", 10.0, 5.0, 50.0) );
+    parameters.add( friction.set("friction", 0.85, 0.5, 0.999) );
+    parameters.add( maxSpeed.set("max speed", 2.0, 1.0, 50.0) );
     parameters.add( rotationStep.set("rotation step", 0.17, 0.0001, 1.0) );
     parameters.add( scale.set("scale", 1.0, 0.1, 2.0) );
     scale.addListener(this, &Bike::onScaleChage);
