@@ -48,7 +48,8 @@ void Gui::keyPressed (ofKeyEventArgs& eventArgs){
 
 //--------------------------------------------------------------
 void Gui::init(){
-    gui.add(app->race.bike.parameters);
-    gui.add(app->race.bike.parametersCollision);
+    gui.add(app->race.parametersDriving);
+    gui.add(app->race.parametersCollision);
+    gui.add(app->race.parametersMisc);
 }
 

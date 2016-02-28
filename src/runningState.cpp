@@ -26,16 +26,31 @@ void runningState::next(){
 };
 
 void runningState::keypressed(int key){
+    Bike& bike1 = *app->race.bikes[0];
+    Bike& bike2 = *app->race.bikes[1];
+    
     switch (key) {
         case OF_KEY_UP:
-            app->race.bike.bAccelerate = true;
+            bike1.bAccelerate = true;
             break;
         case OF_KEY_LEFT:
-            app->race.bike.bTurnLeft = true;
+            bike1.bTurnLeft = true;
             break;
         case OF_KEY_RIGHT:
-            app->race.bike.bTurnRight = true;
+            bike1.bTurnRight = true;
             break;
+            
+            
+        case 'w':
+            bike2.bAccelerate = true;
+            break;
+        case 'a':
+            bike2.bTurnLeft = true;
+            break;
+        case 'd':
+            bike2.bTurnRight = true;
+            break;
+            
             
         case ' ':
             next();
@@ -50,15 +65,28 @@ void runningState::keypressed(int key){
 
 
 void runningState::keyReleased(int key){
+    Bike& bike1 = *app->race.bikes[0];
+    Bike& bike2 = *app->race.bikes[1];
+    
     switch (key) {
         case OF_KEY_UP:
-            app->race.bike.bAccelerate = false;
+            bike1.bAccelerate = false;
             break;
         case OF_KEY_LEFT:
-            app->race.bike.bTurnLeft = false;
+            bike1.bTurnLeft = false;
             break;
         case OF_KEY_RIGHT:
-            app->race.bike.bTurnRight = false;
+            bike1.bTurnRight = false;
+            break;
+            
+        case 'w':
+            bike2.bAccelerate = false;
+            break;
+        case 'a':
+            bike2.bTurnLeft = false;
+            break;
+        case 'd':
+            bike2.bTurnRight = false;
             break;
             
         default:

@@ -1,11 +1,14 @@
 <group>
 	<group/>
 	<acceleration>0.295918</acceleration>
-	<friction>0.86152</friction>
-	<max_speed>4.75</max_speed>
-	<rotation_step>0.112334</rotation_step>
+	<friction>0.968449</friction>
+	<max_speed>4</max_speed>
+	<rotation_step>0.0562168</rotation_step>
 	<front_friction>0.43602</front_friction>
 	<sides_friction>0.85</sides_friction>
 	<sides_rotation>0.05</sides_rotation>
-<scale>0.70102</scale>
+<scale>40</scale>
+<bike_hit_friction>0.912439</bike_hit_friction>
+<max_stuck_time>1.65816</max_stuck_time>
+<debug_mode>0</debug_mode>
 </group>
