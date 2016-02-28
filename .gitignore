@@ -1,5 +1,3 @@
-*.xcconfig
-*.xcodeproj
 *.make
 *.plist
 
