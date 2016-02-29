@@ -31,9 +31,7 @@ Race::Race()
 
     bPaused = false;
     bStarted = false;
-    
-//    TODO esto no va exactamente asi, estas llamadas se encapsulan en assets.
-    
+
     collisionMap = Assets::getInstance()->getMap();
     progressMap = Assets::getInstance()->getCollisionMap();
     bikeImage = Assets::getInstance()->getBikeImage(0);
