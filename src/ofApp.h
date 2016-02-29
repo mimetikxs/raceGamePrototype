@@ -4,6 +4,7 @@
 #include "app.h"
 #include "gui.h"
 #include "OscAdapter.h"
+#include "ofxSyphon.h"
 
 
 class ofApp : public ofBaseApp{
@@ -17,4 +18,7 @@ public:
     OscAdapter *osc;
     Gui *gui;
     
+    // syphon
+    ofFbo outputFbo;
+    ofxSyphonServer syphon;
 };

@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>37CB826A-3989-4538-AFB8-E61FC6EE6A30</string>
+	<string>71A33F75-A91C-4D69-B9BE-3019D1E340F1</string>
 	<key>IDESourceControlProjectName</key>
 	<string>racingGame</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,15 +14,19 @@
 		<string>https://github.com/jefftimesten/ofxJSON.git</string>
 		<key>63C3F311CEF9D5804AF5AA7982E303F113C8AF15</key>
 		<string>https://github.com/mimetikxs/raceGamePrototype.git</string>
+		<key>F4CCB893AFADB97238A965FD2F28717F1CAAE613</key>
+		<string>https://github.com/astellato/ofxSyphon.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>racingGame.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5DB7C332A3A89035E93556A2A38BF414005BA671</key>
-		<string>../../../addons/ofxJSON</string>
+		<string>../../../../../addons/ofxJSON</string>
 		<key>63C3F311CEF9D5804AF5AA7982E303F113C8AF15</key>
 		<string>../..</string>
+		<key>F4CCB893AFADB97238A965FD2F28717F1CAAE613</key>
+		<string>../../../../../addons/ofxSyphon</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/mimetikxs/raceGamePrototype.git</string>
@@ -39,6 +43,14 @@
 			<string>5DB7C332A3A89035E93556A2A38BF414005BA671</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxJSON</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F4CCB893AFADB97238A965FD2F28717F1CAAE613</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxSyphon</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
