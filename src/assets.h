@@ -10,10 +10,19 @@ class Assets: public BaseAssets
 {
     static Assets* instance;
     Assets();
+    
+    
+    
 
 public:
     static Assets* getInstance();
     void loadAssets();
+    
+    string getPlayerName(int i);
+    
+    ofImage getCollisionMap();
+    ofImage getMap();
+    ofImage getBikeImage(int i);
 };
 
 #endif

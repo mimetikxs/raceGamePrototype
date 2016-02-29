@@ -20,8 +20,10 @@ void BaseAssets::loadVideo(ofVideoPlayer *video, string filename){
     videos.push_back(video);
 }
 
-void BaseAssets::loadImage(ofImage *image, string filename){
-    image->loadImage(filename);
+void BaseAssets::loadImage( string filename){
+    ofImage image;
+    image.loadImage(filename);
+    images[filename] = image;
     ofLogNotice() << "Loading: " << filename;
 }
 

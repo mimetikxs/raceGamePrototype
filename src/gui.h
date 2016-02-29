@@ -13,16 +13,10 @@ class Gui
     bool bVisible;
     
 public:
-    
     Gui(App *a);
-
-    
     void draw();
-
     void load();
-
     void save();
-
     void toggleVisibility();
     void keyPressed(ofKeyEventArgs& eventArgs);
     void init();

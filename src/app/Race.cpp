@@ -30,13 +30,15 @@ Race::Race()
 
     bPaused = false;
     bStarted = false;
+    assets = Assets::getInstance();
+    
+    collisionMap = assets->getMap();
+    progressMap = assets->getCollisionMap();
+    bikeImage = assets->getBikeImage(0);
 }
 
 
 void Race::setup(){
-    collisionMap.load("map.png");
-    progressMap.load("progess-map.png");
-    bikeImage.load("bike1.png");
     
     // init starting marks
     // TODO: load from json
@@ -49,13 +51,14 @@ void Race::setup(){
     // TODO: load bike sprites from json
     bikes.push_back(new Bike(&bikeImage));
     bikes.push_back(new Bike(&bikeImage));
+    
 //    bikes.push_back(new Bike());
 //    bikes.push_back(new Bike());
     
     // init players
     // TODO: get constructor values from json
-    players.push_back(new Player("PLAYER 1", bikes[0], ofColor::mediumOrchid, 0));
-    players.push_back(new Player("PLAYER 2", bikes[1], ofColor::mediumSeaGreen, 1));
+    players.push_back(new Player(assets->getPlayerName(0), bikes[0], ofColor::mediumOrchid, 0));
+    players.push_back(new Player(assets->getPlayerName(1), bikes[1], ofColor::mediumSeaGreen, 1));
 //    players.push_back(new Player("player 3", bikes[2], ofColor::mediumTurquoise, 2));
 //    players.push_back(Player("player 4", bikes[3], ofColor::sandyBrown, 3));
     
