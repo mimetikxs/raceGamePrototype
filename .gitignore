@@ -1,0 +1,5 @@
+*.make
+.DS_Store
+bin/*.app
+*.xcodeproj
+*.xconfig

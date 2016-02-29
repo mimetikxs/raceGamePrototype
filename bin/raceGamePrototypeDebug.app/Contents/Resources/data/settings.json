@@ -1,8 +1,0 @@
-{
-  "local_port" : 8001,
-  "remote_ip" : "localhost",
-  "remote_port" : 8080,
-  "width" : 1024,
-  "height" :768,
-  "scale" : 1
- }

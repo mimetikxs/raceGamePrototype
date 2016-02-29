@@ -1,3 +1,0 @@
-ofxGui
-ofxJSON
-ofxOsc
