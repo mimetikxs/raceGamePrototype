@@ -15,6 +15,7 @@
 #include "Player.h"
 #include "Bike.h"
 #include "LineSegment.h"
+#include "assets.h"
 
 
 class StartingMark{
@@ -77,6 +78,7 @@ public:
     
     
 private:
+    Assets *assets;
     
     bool bPaused, bStarted;
     
