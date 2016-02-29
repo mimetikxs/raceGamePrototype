@@ -12,8 +12,6 @@
 Race::Race()
 : finishingLine(398, 707, 398, 583)
 {
-    
-    
     // init parameters
     parametersDriving.add( acceleration.set("acceleration", 0.4, 0.0, 2.0) );
     parametersDriving.add( friction.set("friction", 0.85, 0.5, 0.999) );
