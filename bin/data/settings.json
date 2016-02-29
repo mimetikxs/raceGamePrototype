@@ -4,5 +4,9 @@
   "remote_port" : 8080,
   "width" : 1024,
   "height" :768,
-  "scale" : 1
+  "scale" : 1,
+  "player_0" : "Piloto 1",
+  "player_1" : "Piloto 2",
+  "player_2" : "Piloto 3",
+  "player_3" : "Piloto 4"
  }

@@ -6,14 +6,13 @@
 //
 //
 
+#include "assets.h"
 #include "Race.h"
 
 
 Race::Race()
 : finishingLine(398, 707, 398, 583)
 {
-    
-    
     // init parameters
     parametersDriving.add( acceleration.set("acceleration", 0.4, 0.0, 2.0) );
     parametersDriving.add( friction.set("friction", 0.85, 0.5, 0.999) );
@@ -32,13 +31,16 @@ Race::Race()
 
     bPaused = false;
     bStarted = false;
+    
+//    TODO esto no va exactamente asi, estas llamadas se encapsulan en assets.
+    
+    collisionMap = Assets::getInstance()->getMap();
+    progressMap = Assets::getInstance()->getCollisionMap();
+    bikeImage = Assets::getInstance()->getBikeImage(0);
 }
 
 
 void Race::setup(){
-    collisionMap.load("map.png");
-    progressMap.load("progess-map.png");
-    bikeImage.load("bike1.png");
     
     // init starting marks
     // TODO: load from json
@@ -56,8 +58,8 @@ void Race::setup(){
     
     // init players
     // TODO: get constructor values from json
-    players.push_back(new Player("PLAYER 1", bikes[0], ofColor::mediumOrchid, 0));
-    players.push_back(new Player("PLAYER 2", bikes[1], ofColor::mediumSeaGreen, 1));
+    players.push_back(new Player(Assets::getInstance()->getPlayerName(0), bikes[0], ofColor::mediumOrchid, 0));
+    players.push_back(new Player(Assets::getInstance()->getPlayerName(1), bikes[1], ofColor::mediumSeaGreen, 1));
 //    players.push_back(new Player("player 3", bikes[2], ofColor::mediumTurquoise, 2));
 //    players.push_back(Player("player 4", bikes[3], ofColor::sandyBrown, 3));
     

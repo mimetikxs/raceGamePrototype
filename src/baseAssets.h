@@ -10,7 +10,10 @@
 class BaseAssets{
 public:
     BaseAssets();
-    void loadImage(ofImage *image, string filename);
+    map<string, ofImage> images;
+    
+    void loadImage(string filename);
+    void getImage(string filename);
     void loadVideo(ofVideoPlayer *video, string filename);
     void stopVideos();
     
@@ -29,11 +32,11 @@ public:
     void loadFont(int size);
 
     string default_font;
+    Json::Value getData(string key);
     
 private:
     vector<ofVideoPlayer*> videos;
     
-    Json::Value getData(string key);
     ofxJSONElement settings;
     
     void clearFonts();
