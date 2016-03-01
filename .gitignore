@@ -3,4 +3,6 @@
 bin/*.app
 *.xcodeproj
 racingGame.xcodeproj/*
-*.xconfig
+*.xcconfig
+Makefile
+*.plist
