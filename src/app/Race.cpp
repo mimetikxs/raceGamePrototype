@@ -8,6 +8,8 @@
 
 #include "Race.h"
 
+#define MAX_NUM_LAPS 5
+
 
 Race::Race()
 : finishingLine(398, 707, 398, 583)
@@ -24,9 +26,14 @@ Race::Race()
     parametersCollision.add( bikeHitFriction.set("bike hit friction", 0.85, 0.5, 0.999) );
     parametersMisc.add( maxStuckTime.set("max stuck time", 3, 0, 5) );
     parametersMisc.add( bDrawDebug.set("debug mode", true) );
+    parametersPowerups.add( pu_acceleration.set("pu acceleration", 0.4, 0.0, 2.0) );
+    parametersPowerups.add( pu_friction.set("pu friction", 0.85, 0.5, 0.999) );
+    parametersPowerups.add( pu_maxSpeed.set("pu max speed", 2.0, 1.0, 50.0) );
+    parametersPowerups.add( pu_rotationStep.set("pu rotation step", 0.17, 0.0001, 1.0) );
     
     ofAddListener(parametersDriving.parameterChangedE(), this, &Race::onParameterChange);
     ofAddListener(parametersCollision.parameterChangedE(), this, &Race::onParameterChange);
+    ofAddListener(parametersPowerups.parameterChangedE(), this, &Race::onParameterChange);
 
     bPaused = false;
     bStarted = false;
@@ -35,6 +42,12 @@ Race::Race()
     collisionMap = assets->getMap();
     progressMap = assets->getCollisionMap();
     bikeImage = assets->getBikeImage(0);
+    
+    // testing power ups
+    powerups.push_back( new PowerUp(548, 200, 10) );
+    powerups[0]->active = true;
+    
+    numLaps = 0;
 }
 
 
@@ -75,6 +88,7 @@ void Race::setup(){
 void Race::start() {
     bStarted = true;
     elapsedTime = 0;
+    numLaps = 0;
     prevTime = ofGetElapsedTimeMillis();
 }
 
@@ -82,6 +96,8 @@ void Race::start() {
 void Race::update(){
     if(bStarted){
         updateBikes();
+        
+        updatePowerUps();
         
         checkStuck();
         
@@ -99,10 +115,18 @@ void Race::draw() {
     finishingLine.draw();
     
     if(bDrawDebug){
+        for(auto powerUp : powerups){
+            if(powerUp->active)
+                powerUp->drawDebug();
+        }
         for(auto & player : players){
             player->bike->drawDebug(player->color);
         }
     }else{
+        for(auto powerUp : powerups){
+            if(powerUp->active)
+                powerUp->drawDebug();
+        }
         for(auto & player : players){
             player->bike->draw(player->color);
         }
@@ -112,7 +136,7 @@ void Race::draw() {
 
 void Race::drawInfo(){
     // timer
-    ofDrawBitmapStringHighlight(getElapsedTimeString(), 20, 678);
+    ofDrawBitmapStringHighlight(getElapsedTimeString(), 20, 658);
     
     // players info
     for(auto player : players){
@@ -120,10 +144,22 @@ void Race::drawInfo(){
         string completedLaps = "LAP: " + ofToString(player->completedLaps);
         string completedPct  = ofToString(player->lapPercent*100, 2) + "%";
         float x = 20 + 120 * player->rankPos;
-        ofDrawBitmapStringHighlight(name, x, 708, player->color);
-        ofDrawBitmapStringHighlight(completedLaps, x, 728, player->color);
-        ofDrawBitmapStringHighlight(completedPct, x, 748, player->color);
+        ofDrawBitmapStringHighlight(name, x, 688, player->color);
+        ofDrawBitmapStringHighlight(completedLaps, x, 708, player->color);
+        ofDrawBitmapStringHighlight(completedPct, x, 728, player->color);
+        
+        // power bar
+        float powerPct  = player->bike->powerbar.getPercent();
+        ofPushStyle();
+        ofSetColor(player->color);
+        ofNoFill();
+        ofDrawRectangle(x-4, 738, 100, 15);
+        ofFill();
+        ofDrawRectangle(x-4, 738, 100*powerPct, 15);
+        ofPopStyle();
     }
+    
+    ofDrawBitmapStringHighlight("LAP: " + ofToString(numLaps) + "/" + ofToString(MAX_NUM_LAPS), 20, 620);
 }
 
 
@@ -212,6 +248,41 @@ void Race::updateRanking(){
             }
         }
     }
+    
+    // update race's completed laps
+    int highestLap = 0;
+    for(auto player : players){
+        int playerLap = player->completedLaps;
+        if(playerLap > highestLap){
+            highestLap = playerLap;
+        }
+    }
+    
+    numLaps = highestLap;
+}
+
+
+
+void Race::updatePowerUps(){
+    // check collisions with bikes
+    for(auto powerUp : powerups){
+        if(powerUp->active){
+            for(auto bike : bikes){
+                if(powerUp->collides(bike)){
+                    bike->powerbar.addTime(5); // add 5 secods to power bar
+                    powerUp->active = false;
+                    
+                    lasttime = ofGetElapsedTimef();
+                }
+            }
+        }
+    }
+    
+    // TODO: proper logic to activate/deactivate powerups
+    float idleTime = ofGetElapsedTimef() - lasttime;
+    if(idleTime > 10){
+        powerups[0]->active = true;
+    }
 }
 
 
@@ -262,6 +333,7 @@ void Race::onParameterChange(ofAbstractParameter& param){
             bike->setScale(value);
         }
     }
+    // collisions
     else if(paramName == "front friction"){
         for(auto bike : bikes){
             bike->frontFriction = value;
@@ -280,6 +352,27 @@ void Race::onParameterChange(ofAbstractParameter& param){
     else if(paramName == "bike hit friction"){
         for(auto bike : bikes){
             bike->bikeHitFriction = value;
+        }
+    }
+    // power ups
+    else if(paramName == "pu acceleration"){
+        for(auto bike : bikes){
+            bike->powerbar.acceleration = value;
+        }
+    }
+    else if(paramName == "pu friction"){
+        for(auto bike : bikes){
+            bike->powerbar.friction = value;
+        }
+    }
+    else if(paramName == "pu max speed"){
+        for(auto bike : bikes){
+            bike->powerbar.maxSpeed = value;
+        }
+    }
+    else if(paramName == "pu rotation step"){
+        for(auto bike : bikes){
+            bike->powerbar.rotationStep = value;
         }
     }
 }

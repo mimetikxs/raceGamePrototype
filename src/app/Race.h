@@ -16,6 +16,9 @@
 #include "Bike.h"
 #include "LineSegment.h"
 #include "assets.h"
+#include "PowerUp.h"
+
+#define MAX_NUM_LAPS 5
 
 
 class StartingMark{
@@ -74,6 +77,12 @@ public:
     ofParameter<float> maxStuckTime;
     ofParameter<bool> bDrawDebug;
     
+    ofParameterGroup parametersPowerups;
+    ofParameter<float> pu_acceleration;
+    ofParameter<float> pu_friction;
+    ofParameter<float> pu_maxSpeed;
+    ofParameter<float> pu_rotationStep;
+    
     void onParameterChange(ofAbstractParameter& param);
     
     
@@ -85,9 +94,16 @@ private:
     uint64_t prevTime;
     uint64_t elapsedTime;
     
+    int numLaps;
+    
     void updateBikes();
     void updateRanking();
     void updateTimer();
     void checkStuck();
-    string getElapsedTimeString(); // TODO: move to ultils
+    string getElapsedTimeString();
+    
+    // power ups
+    vector<PowerUp*> powerups;
+    void updatePowerUps();
+    float lasttime; // debug: elapsed when powerup was deactivated
 };

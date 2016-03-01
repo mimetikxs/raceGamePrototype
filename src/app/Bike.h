@@ -9,6 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "PowerBar.h"
 
 
 class CollisionPoint {
@@ -24,16 +25,6 @@ public:
         radius = r;
     }
 };
-
-
-//class Checkpoint{
-//public:
-//    ofVec2f position;
-//    float rotation;
-//    Checkpoint(){
-//        rotation = 0;
-//    }
-//};
 
 
 class Bike {
@@ -52,6 +43,7 @@ public:
     ofVec2f getBackPos() { return collisionPoints[0].position + position; }
     ofVec2f getVelocity() { return velocity; }
     ofVec2f getDirection() { return direction; }
+    float getScale() { return scale; }
     vector<CollisionPoint> & getCollisionCircles() { return collisionCircles; }
     
     void doNAACollision(ofImage* map);
@@ -79,19 +71,19 @@ public:
     // bike-bike collision response
     float bikeHitFriction;
     
-    // testing //////////////////////////////
+    // power ups
+    bool bUsingPowerUp;
+    float powerUpTotalDuration;
     
     // illegal actions
     float stuckTimer;
     float stuckPrevTimer;
     float getTimeStuck();
     
-    //Checkpoint checkpoint;
-    //float checkpointPrevTime;
-    
-    //bool isGoingBackwads;
-    
-    // end testing //////////////////////////
+    // power ups
+    PowerBar powerbar;
+    void activatePower(){ powerbar.activate(); }
+    void deactivatePower(){ powerbar.deactivate(); }
     
 private:
     
@@ -105,6 +97,7 @@ private:
     
     float length, width;
     ofImage* image;
+    ofVboMesh mesh;
     
     // rect corners
     vector<ofVec2f> corners;
@@ -112,6 +105,4 @@ private:
     vector<CollisionPoint> collisionPoints;
     // bike-bike collision
     vector<CollisionPoint> collisionCircles;
-    
-    ofVboMesh mesh;
 };

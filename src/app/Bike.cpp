@@ -76,21 +76,40 @@ Bike::Bike(ofImage* img){
 
 
 void Bike::update(){
+    float _acceleration;
+    float _friction;
+    float _maxSpeed;
+    float _rotationStep;
+    
+    if(powerbar.isActive()){
+        // power up values
+        _acceleration = powerbar.acceleration;
+        _friction = powerbar.friction;
+        _maxSpeed = powerbar.maxSpeed;
+        _rotationStep = powerbar.rotationStep;
+    }else{
+        // normal values
+        _acceleration = acceleration;
+        _friction = friction;
+        _maxSpeed = maxSpeed;
+        _rotationStep = rotationStep;
+    }
+    
     if(bAccelerate){
-        speed += (speed < maxSpeed) ? acceleration : 0;
+        speed += (speed < _maxSpeed) ? _acceleration : 0;
     }
     
     if(bTurnRight){
-        float newRotation = rotation - (rotationStep * (speed / maxSpeed));
+        float newRotation = rotation - (_rotationStep * (speed / _maxSpeed));
         setRotation(newRotation);
     }
     
     if(bTurnLeft){
-        float newRotation = rotation + (rotationStep * (speed / maxSpeed));
+        float newRotation = rotation + (_rotationStep * (speed / _maxSpeed));
         setRotation(newRotation);
     }
     
-    speed *= (speed < 0.003f) ? 0.0f : friction;
+    speed *= (speed < 0.003f) ? 0.0f : _friction;
     
     direction.x = sin(rotation);
     direction.y = cos(rotation);
@@ -99,17 +118,7 @@ void Bike::update(){
     
     position += velocity;
     
-    // record position and rotation
-//    if(!isStuck){
-//        if(ofGetElapsedTimef() - checkpointPrevTime > 3){
-//            checkpoint.rotation = rotation;
-//            checkpoint.position = position;
-//            
-//            checkpointPrevTime = ofGetElapsedTimef();
-//        }
-//    }else{
-//        checkpointPrevTime = ofGetElapsedTimef();
-//    }
+    powerbar.update();
 }
 
 
@@ -158,8 +167,6 @@ float Bike::getTimeStuck(){
     stuckPrevTimer = ofGetElapsedTimef();
     
     return stuckTimer;
-    
-    //isStuck = stuckTimer > maxStuckTime;
 }
 
 
@@ -244,24 +251,6 @@ void Bike::draw(ofColor color){
     image->unbind();
     
     ofPopMatrix();
-    
-    
-    
-//    image->bind();
-//    
-//    ofVec2f p1 = localToGlobal(corners[0]);
-//    ofVec2f p2 = localToGlobal(corners[1]);
-//    ofVec2f p3 = localToGlobal(corners[2]);
-//    ofVec2f p4 = localToGlobal(corners[3]);
-//    
-//    ofBeginShape();
-//    ofVertex(p1.x, p1.y);
-//    ofVertex(p2.x, p2.y);
-//    ofVertex(p3.x, p3.y);
-//    ofVertex(p4.x, p4.y);
-//    ofEndShape();
-//    
-//    image->unbind();
     
 }
 

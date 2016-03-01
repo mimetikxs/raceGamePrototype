@@ -7,8 +7,12 @@
 	<front_friction>0.43602</front_friction>
 	<sides_friction>0.85</sides_friction>
 	<sides_rotation>0.05</sides_rotation>
-<scale>40</scale>
+<scale>53.0255</scale>
 <bike_hit_friction>0.912439</bike_hit_friction>
 <max_stuck_time>1.65816</max_stuck_time>
 <debug_mode>0</debug_mode>
+<pu_acceleration>0.357143</pu_acceleration>
+	<pu_friction>0.970995</pu_friction>
+	<pu_max_speed>6.75</pu_max_speed>
+	<pu_rotation_step>0.076623</pu_rotation_step>
 </group>
