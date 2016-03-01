@@ -26,14 +26,14 @@ public:
 };
 
 
-class Checkpoint{
-public:
-    ofVec2f position;
-    float rotation;
-    Checkpoint(){
-        rotation = 0;
-    }
-};
+//class Checkpoint{
+//public:
+//    ofVec2f position;
+//    float rotation;
+//    Checkpoint(){
+//        rotation = 0;
+//    }
+//};
 
 
 class Bike {
