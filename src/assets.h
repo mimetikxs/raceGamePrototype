@@ -22,6 +22,7 @@ public:
     
     ofImage getCollisionMap();
     ofImage getMap();
+    ofImage getBackground();
     ofImage getBikeImage(int i);
 };
 

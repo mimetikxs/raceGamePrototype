@@ -12,7 +12,7 @@ void ofApp::setup(){
     
     // syphon
     syphon.setName("Racing game");
-    outputFbo.allocate(1024, 768);
+    outputFbo.allocate(1920, 1080);
 }
 
 
@@ -23,9 +23,8 @@ void ofApp::draw(){
     app->draw();
     outputFbo.end();
     
-    outputFbo.getTexture().draw(0,0);
-    
     syphon.publishTexture(&outputFbo.getTexture());
     
+    outputFbo.getTexture().draw(0,0);
     gui->draw();
 }

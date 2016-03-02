@@ -67,7 +67,7 @@ float LineSegment::getDistance(ofVec2f point){
     ofVec2f v2( delta );        // colision line
     ofVec2f v3( a - point );    // aux vector
     
-    ofVec2f v2_ln = getLeftNormal(v2);
+    ofVec2f v2_ln = getRightNormal(v2);
     
     float distance = v3.dot(v2_ln.normalize()); // projection of v3 into v2_ln
     

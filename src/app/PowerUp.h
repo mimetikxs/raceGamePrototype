@@ -31,10 +31,10 @@ public:
     void drawDebug() {
         ofPushStyle();
         if(collisionPoint->isColliding){
-            ofFill();
+            ofNoFill();
             ofSetColor(ofColor::red);
         }else{
-            ofNoFill();
+            ofSetColor(ofColor::red);
         }
         
         ofVec2f p = collisionPoint->position;
@@ -57,6 +57,8 @@ public:
             ofVec2f deltaBA(posA - posB);
             float distance = deltaBA.length();
             bool isColliding = distance < collisionDistance;
+            
+            isColliding = isColliding;
             
             if(isColliding){
                 return true;

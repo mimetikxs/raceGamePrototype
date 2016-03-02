@@ -12,7 +12,7 @@
 
 
 Race::Race()
-: finishingLine(398, 707, 398, 583)
+: finishingLine(1333, 79, 1333, 286)
 {
     // init parameters
     parametersDriving.add( acceleration.set("acceleration", 0.4, 0.0, 2.0) );
@@ -42,9 +42,10 @@ Race::Race()
     collisionMap = assets->getMap();
     progressMap = assets->getCollisionMap();
     bikeImage = assets->getBikeImage(0);
+    backgroundImg = assets->getBackground();
     
     // testing power ups
-    powerups.push_back( new PowerUp(548, 200, 10) );
+    powerups.push_back( new PowerUp(527, 913, 20) );
     powerups[0]->active = true;
     
     numLaps = 0;
@@ -55,25 +56,24 @@ void Race::setup(){
     
     // init starting marks
     // TODO: load from json
-    startingMarks.push_back(StartingMark(ofGetWidth()/2 + 20, 620, PI/2));
-    startingMarks.push_back(StartingMark(ofGetWidth()/2, 665, PI/2));
-//    startingMarks.push_back(StartingMark(ofGetWidth()/2, 660, PI/2));
-//    startingMarks.push_back(StartingMark(ofGetWidth()/2, 660, PI/2));
+    startingMarks.push_back(StartingMark(1248, 148, PI/2));
+    startingMarks.push_back(StartingMark(1202, 211, PI/2));
+    startingMarks.push_back(StartingMark(1105, 148, PI/2));
+    startingMarks.push_back(StartingMark(1054, 211, PI/2));
     
     // init bikes
     // TODO: load bike sprites from json
     bikes.push_back(new Bike(&bikeImage));
     bikes.push_back(new Bike(&bikeImage));
-    
-//    bikes.push_back(new Bike());
-//    bikes.push_back(new Bike());
+    bikes.push_back(new Bike(&bikeImage));
+    bikes.push_back(new Bike(&bikeImage));
     
     // init players
     // TODO: get constructor values from json
     players.push_back(new Player(assets->getPlayerName(0), bikes[0], ofColor::mediumOrchid, 0));
     players.push_back(new Player(assets->getPlayerName(1), bikes[1], ofColor::mediumSeaGreen, 1));
-//    players.push_back(new Player("player 3", bikes[2], ofColor::mediumTurquoise, 2));
-//    players.push_back(Player("player 4", bikes[3], ofColor::sandyBrown, 3));
+    players.push_back(new Player(assets->getPlayerName(2), bikes[2], ofColor::mediumTurquoise, 2));
+    players.push_back(new Player(assets->getPlayerName(3), bikes[3], ofColor::sandyBrown, 3));
     
     // position bikes on the starting position
     for(auto player : players){
@@ -110,9 +110,10 @@ void Race::update(){
 
 
 void Race::draw() {
-    collisionMap.draw(0,0);
+    //collisionMap.draw(0,0);
+    backgroundImg.draw(0,0);
     
-    finishingLine.draw();
+    //finishingLine.draw();
     
     if(bDrawDebug){
         for(auto powerUp : powerups){
@@ -136,30 +137,30 @@ void Race::draw() {
 
 void Race::drawInfo(){
     // timer
-    ofDrawBitmapStringHighlight(getElapsedTimeString(), 20, 658);
+    ofDrawBitmapStringHighlight(getElapsedTimeString(), 1244, 868);
     
     // players info
     for(auto player : players){
         string name = player->name;
         string completedLaps = "LAP: " + ofToString(player->completedLaps);
         string completedPct  = ofToString(player->lapPercent*100, 2) + "%";
-        float x = 20 + 120 * player->rankPos;
-        ofDrawBitmapStringHighlight(name, x, 688, player->color);
-        ofDrawBitmapStringHighlight(completedLaps, x, 708, player->color);
-        ofDrawBitmapStringHighlight(completedPct, x, 728, player->color);
+        float x = 1244 + 120 * player->rankPos;
+        ofDrawBitmapStringHighlight(name, x, 918, player->color);
+        ofDrawBitmapStringHighlight(completedLaps, x, 938, player->color);
+        ofDrawBitmapStringHighlight(completedPct, x, 958, player->color);
         
         // power bar
         float powerPct  = player->bike->powerbar.getPercent();
         ofPushStyle();
         ofSetColor(player->color);
         ofNoFill();
-        ofDrawRectangle(x-4, 738, 100, 15);
+        ofDrawRectangle(x-4, 968, 100, 15);
         ofFill();
-        ofDrawRectangle(x-4, 738, 100*powerPct, 15);
+        ofDrawRectangle(x-4, 968, 100*powerPct, 15);
         ofPopStyle();
     }
     
-    ofDrawBitmapStringHighlight("LAP: " + ofToString(numLaps) + "/" + ofToString(MAX_NUM_LAPS), 20, 620);
+    ofDrawBitmapStringHighlight("LAP: " + ofToString(numLaps) + "/" + ofToString(MAX_NUM_LAPS), 1244, 888);
 }
 
 
