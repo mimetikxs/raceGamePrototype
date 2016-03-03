@@ -14,7 +14,6 @@
 Race::Race()
 : finishingLine(1333, 79, 1333, 286)
 {
-    
     assets = Assets::getInstance();
     
     // init parameters
@@ -41,10 +40,6 @@ Race::Race()
     bPaused = false;
     bStarted = false;
     
-    collisionMap = assets->getMap();
-    progressMap = assets->getCollisionMap();
-    bikeImage = assets->getBikeImage(0);
-    
     // testing power ups
     powerups.push_back( new PowerUp(527, 913, 20) );
     powerups[0]->active = true;
@@ -64,10 +59,10 @@ void Race::setup(){
     
     // init bikes
     // TODO: load bike sprites from json
-    bikes.push_back(new Bike(&bikeImage));
-    bikes.push_back(new Bike(&bikeImage));
-    bikes.push_back(new Bike(&bikeImage));
-    bikes.push_back(new Bike(&bikeImage));
+    bikes.push_back(new Bike(&assets->bike1));
+    bikes.push_back(new Bike(&assets->bike1));
+    bikes.push_back(new Bike(&assets->bike1));
+    bikes.push_back(new Bike(&assets->bike1));
     
     // init players
     // TODO: get constructor values from json
@@ -174,7 +169,7 @@ void Race::updateBikes(){
     
     for(auto bike : bikes){
         bike->update();
-        bike->doNAACollision(&collisionMap);
+        bike->doNAACollision(&assets->collisionMap);
     }
     
     // bike-bike collision:
@@ -226,9 +221,9 @@ void Race::updateRanking(){
         }
         
         const ofVec2f p = bike->getPosition();
-        bool isInsideTrack = (collisionMap.getPixels().getColor(p.x, p.y).r != 0);
+        bool isInsideTrack = (assets->collisionMap.getPixels().getColor(p.x, p.y).r != 0);
         if (isInsideTrack){
-            ofColor color = progressMap.getPixels().getColor(p.x, p.y);
+            ofColor color = assets->collisionMap.getPixels().getColor(p.x, p.y);
             float percent = color.r / 255.f;
             
             // update completed percentage of current lap

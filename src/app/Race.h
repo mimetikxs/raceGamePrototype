@@ -56,10 +56,6 @@ public:
     vector<Bike*> bikes;
     vector<Player*> players;
     
-    ofImage collisionMap;
-    ofImage progressMap;
-    ofImage bikeImage;
-    
     ofParameterGroup parametersDriving;
     ofParameter<float> acceleration;
     ofParameter<float> friction;
