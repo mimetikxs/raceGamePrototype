@@ -59,7 +59,6 @@ public:
     ofImage collisionMap;
     ofImage progressMap;
     ofImage bikeImage;
-    ofImage backgroundImg;
     
     ofParameterGroup parametersDriving;
     ofParameter<float> acceleration;

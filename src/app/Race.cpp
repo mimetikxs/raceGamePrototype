@@ -14,6 +14,9 @@
 Race::Race()
 : finishingLine(1333, 79, 1333, 286)
 {
+    
+    assets = Assets::getInstance();
+    
     // init parameters
     parametersDriving.add( acceleration.set("acceleration", 0.4, 0.0, 2.0) );
     parametersDriving.add( friction.set("friction", 0.85, 0.5, 0.999) );
@@ -37,12 +40,10 @@ Race::Race()
 
     bPaused = false;
     bStarted = false;
-    assets = Assets::getInstance();
     
     collisionMap = assets->getMap();
     progressMap = assets->getCollisionMap();
     bikeImage = assets->getBikeImage(0);
-    backgroundImg = assets->getBackground();
     
     // testing power ups
     powerups.push_back( new PowerUp(527, 913, 20) );
@@ -110,8 +111,12 @@ void Race::update(){
 
 
 void Race::draw() {
+    
+    assets->getFont(40)->drawString("hola", 0, 0);
+
+    
     //collisionMap.draw(0,0);
-    backgroundImg.draw(0,0);
+    assets->backgroundImg.draw(0,0);
     
     //finishingLine.draw();
     

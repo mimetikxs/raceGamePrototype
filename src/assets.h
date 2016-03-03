@@ -11,8 +11,6 @@ class Assets: public BaseAssets
     static Assets* instance;
     Assets();
     
-    
-    
 
 public:
     static Assets* getInstance();
@@ -22,8 +20,10 @@ public:
     
     ofImage getCollisionMap();
     ofImage getMap();
-    ofImage getBackground();
     ofImage getBikeImage(int i);
+    
+    ofImage backgroundImg;
+    
 };
 
 #endif
