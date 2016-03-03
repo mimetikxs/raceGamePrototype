@@ -18,12 +18,11 @@ public:
     
     string getPlayerName(int i);
     
-    ofImage getCollisionMap();
-    ofImage getMap();
-    ofImage getBikeImage(int i);
     
     ofImage backgroundImg;
-    
+    ofImage collisionMap;
+    ofImage bikeImg;
+    ofImage map;
 };
 
 #endif

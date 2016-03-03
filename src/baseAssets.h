@@ -10,11 +10,10 @@
 class BaseAssets{
 public:
     BaseAssets();
-    map<string, ofImage> images;
     
-    void loadImage(string filename);
-    void getImage(string filename);
+    void loadImage(ofImage *image, string filename);
     void loadVideo(ofVideoPlayer *video, string filename);
+    
     void stopVideos();
     
     int getLocalPort();

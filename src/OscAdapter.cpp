@@ -23,7 +23,7 @@ void OscAdapter::update(ofEventArgs &args){
     while(receiver->hasWaitingMessages()){
         bOnline = true;
         ofxOscMessage m;
-        receiver->getNextMessage(&m);
+        receiver->getNextMessage(m);
         processOscMessage(m);
     }
 }
