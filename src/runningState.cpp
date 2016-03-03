@@ -1,6 +1,6 @@
 #include "runningState.h"
 #include "standbyState.h"
-//#include "finishState.h"
+#include "finishState.h"
 
 
 runningState::~runningState(){};
@@ -22,7 +22,7 @@ void runningState::update(){
 
 
 void runningState::next(){
-    app->setCurrentState(new standbyState(app));
+    app->setCurrentState(new finishState(app));
     delete this;
 };
 

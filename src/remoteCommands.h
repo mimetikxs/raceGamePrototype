@@ -15,8 +15,6 @@ public:
     
     virtual void processRemoteCommand(int player, bool up, bool down,
                                       bool left, bool right, bool turbo){};
-    
-    
 };
 
 #endif
