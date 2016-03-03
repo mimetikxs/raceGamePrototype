@@ -47,7 +47,7 @@ public:
     void drawInfo();
     
     void start();
-    void togglePause();
+    bool isFinised(){ return bFinished; }
     
     LineSegment finishingLine;
     
@@ -85,7 +85,7 @@ public:
 private:
     Assets *assets;
     
-    bool bPaused, bStarted;
+    bool bStarted, bFinished;
     
     uint64_t prevTime;
     uint64_t elapsedTime;

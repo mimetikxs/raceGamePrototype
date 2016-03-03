@@ -16,12 +16,13 @@ public:
     static Assets* getInstance();
     void loadAssets();
     
-    string getPlayerName(int i);
-    
     ofImage backgroundImg;
     ofImage collisionMap;
     ofImage progressMap;
     ofImage bike1;
+    
+    string getPlayerName(int i);
+    ofColor getPlayerColor(int i);
     
 };
 

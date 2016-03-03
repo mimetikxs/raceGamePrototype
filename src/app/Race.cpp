@@ -36,19 +36,6 @@ Race::Race()
     ofAddListener(parametersDriving.parameterChangedE(), this, &Race::onParameterChange);
     ofAddListener(parametersCollision.parameterChangedE(), this, &Race::onParameterChange);
     ofAddListener(parametersPowerups.parameterChangedE(), this, &Race::onParameterChange);
-
-    bPaused = false;
-    bStarted = false;
-    
-    // testing power ups
-    powerups.push_back( new PowerUp(527, 913, 20) );
-    powerups[0]->active = true;
-    
-    numLaps = 0;
-}
-
-
-void Race::setup(){
     
     // init starting marks
     // TODO: load from json
@@ -64,27 +51,49 @@ void Race::setup(){
     bikes.push_back(new Bike(&assets->bike1));
     bikes.push_back(new Bike(&assets->bike1));
     
-    // init players
-    // TODO: get constructor values from json
-    players.push_back(new Player(assets->getPlayerName(0), bikes[0], ofColor::mediumOrchid, 0));
-    players.push_back(new Player(assets->getPlayerName(1), bikes[1], ofColor::mediumSeaGreen, 1));
-    players.push_back(new Player(assets->getPlayerName(2), bikes[2], ofColor::mediumTurquoise, 2));
-    players.push_back(new Player(assets->getPlayerName(3), bikes[3], ofColor::sandyBrown, 3));
+    // testing power ups
+    powerups.push_back( new PowerUp(527, 913, 20) );
+    powerups[0]->active = true;
+}
+
+
+void Race::setup(){
+    // reset flags
+    bStarted = false;
+    bFinished = false;
     
-    // position bikes on the starting position
+    // reset counter
+    numLaps = 0;
+    
+    // init players
+    // TODO: get data from external source
+    players.clear();
+    for(int i = 0; i < 4; i++){
+        string name = assets->getPlayerName(i);
+        ofColor color = assets->getPlayerColor(i);
+        int ranking = i;
+        
+        if(name != ""){
+            players.push_back(new Player(name, bikes[i], color, ranking));
+        }
+    }
+    
+    // reset bikes
     for(auto player : players){
         ofVec2f pos = startingMarks[player->rankPos].position;
         float rot = startingMarks[player->rankPos].rotation;
-        player->bike->setPosition(pos.x, pos.y);
-        player->bike->setRotation(rot);
+        
+        player->bike->reset(pos,rot);
     }
 }
 
 
 void Race::start() {
+    if(bStarted){
+        return;
+    }
     bStarted = true;
     elapsedTime = 0;
-    numLaps = 0;
     prevTime = ofGetElapsedTimeMillis();
 }
 
@@ -92,30 +101,24 @@ void Race::start() {
 void Race::update(){
     if(bStarted){
         updateBikes();
-        
-        updatePowerUps();
-        
         checkStuck();
         
-        updateTimer();
+        if(!bFinished){
+            updatePowerUps();
+            updateTimer();
+            updateRanking(); // this can be updated at a diferent rate
+        }
         
-        // this can be updated at a diferent rate
-        updateRanking();
+        if(numLaps == MAX_NUM_LAPS){
+            bFinished = true;
+        }
     }
 }
 
 
 void Race::draw() {
-    
-    assets->getFont(40)->drawString("hola", 0, 0);
-
-    
-    //collisionMap.draw(0,0);
-    assets->backgroundImg.draw(0,0);
-    
-    //finishingLine.draw();
-    
     if(bDrawDebug){
+        assets->collisionMap.draw(0,0);
         for(auto powerUp : powerups){
             if(powerUp->active)
                 powerUp->drawDebug();
@@ -123,7 +126,9 @@ void Race::draw() {
         for(auto & player : players){
             player->bike->drawDebug(player->color);
         }
+        finishingLine.draw();
     }else{
+        assets->backgroundImg.draw(0,0);
         for(auto powerUp : powerups){
             if(powerUp->active)
                 powerUp->drawDebug();
@@ -223,7 +228,7 @@ void Race::updateRanking(){
         const ofVec2f p = bike->getPosition();
         bool isInsideTrack = (assets->collisionMap.getPixels().getColor(p.x, p.y).r != 0);
         if (isInsideTrack){
-            ofColor color = assets->collisionMap.getPixels().getColor(p.x, p.y);
+            ofColor color = assets->progressMap.getPixels().getColor(p.x, p.y);
             float percent = color.r / 255.f;
             
             // update completed percentage of current lap

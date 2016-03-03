@@ -1,12 +1,12 @@
 #include "ofApp.h"
 #include "runningState.h"
-
+#include "startState.h"
 
 
 void ofApp::setup(){
     
     app = new App();
-    app->setCurrentState(new runningState(app));
+    app->setCurrentState(new startState(app));
     osc = new OscAdapter(app);
     gui = new Gui(app);
     

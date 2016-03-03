@@ -33,6 +33,8 @@ public:
     
     Bike(ofImage* image);
     
+    void reset(ofVec2f pos, float rot);
+    
     void setPosition(float x, float y);
     void setRotation(float radians);
     void setScale(float scale);
