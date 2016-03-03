@@ -15,10 +15,6 @@
 Bike::Bike(ofImage* img){
     image = img;
     
-    position.set(0,0);
-    rotation = 0;
-    speed = 0;
-    
     acceleration = 0.4;
     friction = 0.85;
     maxSpeed = 2.0;
@@ -29,15 +25,6 @@ Bike::Bike(ofImage* img){
     sidesRotation = 0.01;
     
     bikeHitFriction = 0.85;
-    
-    bAccelerate = false;
-    bTurnLeft = false;
-    bTurnRight = false;
-    
-    // testing
-    stuckTimer = 0;
-    stuckPrevTimer = 0;
-    //checkpointPrevTime = 0;
     
     // init geometry (all coordinates are normalized [0..1]):
     scale = 1.0;
@@ -72,6 +59,20 @@ Bike::Bike(ofImage* img){
     collisionCircles.push_back(CollisionPoint(0, -halfLength + halfWidth, halfWidth)); // back
     collisionCircles.push_back(CollisionPoint(0, 0, halfWidth));                       // center
     collisionCircles.push_back(CollisionPoint(0, halfLength - halfWidth, halfWidth));  // front
+}
+
+
+void Bike::reset(ofVec2f pos, float rot){
+    position = pos;
+    rotation = rot;
+    speed = 0;
+    
+    bAccelerate = false;
+    bTurnLeft = false;
+    bTurnRight = false;
+    
+    stuckTimer = 0;
+    stuckPrevTimer = 0;
 }
 
 

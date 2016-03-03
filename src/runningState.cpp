@@ -1,29 +1,37 @@
 #include "runningState.h"
 #include "standbyState.h"
+//#include "finishState.h"
+
+
+runningState::~runningState(){};
 
 
 runningState::runningState(App *a):BaseState(a){
     BaseState::initialize();
     
-    app->race.setup();
     app->race.start();
 };
 
-runningState::~runningState(){};
+
+void runningState::update(){
+    app->race.update();
+    if(app->race.isFinised()){
+        next();
+    }
+};
+
+
+void runningState::next(){
+    app->setCurrentState(new standbyState(app));
+    delete this;
+};
+
 
 void runningState::draw(){
     app->race.draw();
     app->race.drawInfo();
 };
 
-void runningState::update(){
-    app->race.update();
-};
-
-void runningState::next(){
-    app->setCurrentState(new standbyState(app));
-    delete this;
-};
 
 void runningState::keypressed(int key){
     Bike& bike1 = *app->race.bikes[0];
@@ -55,7 +63,8 @@ void runningState::keypressed(int key){
         case '1':
             bike2.activatePower();
             break;
-            
+        
+        // debug only, state changes when race is finished
         case ' ':
             next();
             break;

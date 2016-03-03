@@ -1,6 +1,6 @@
 #include "ofApp.h"
 #include "runningState.h"
-
+//#include "startState.h"
 
 
 void ofApp::setup(){
