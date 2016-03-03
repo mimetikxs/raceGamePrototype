@@ -32,4 +32,8 @@ void OscAdapter::update(ofEventArgs &args){
 void OscAdapter::processOscMessage(ofxOscMessage msg){
     
     
+    if(msg.getAddress() == "/player1"){
+        app->current_state->processRemoteCommand(0, false, false, true, true, false);
+    }
+    
 }

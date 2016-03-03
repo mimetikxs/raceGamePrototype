@@ -112,3 +112,15 @@ void runningState::keyReleased(int key){
             break;
     }
 }
+
+void  runningState::processRemoteCommand(int player, bool up, bool down, bool left, bool right, bool turbo){
+    
+    Bike& bike = *app->race.bikes[player];
+    bike.bAccelerate = up;
+    bike.bTurnLeft = left;
+    bike.bTurnRight = right;
+    if(turbo)
+        bike.activatePower();
+    else
+        bike.deactivatePower();
+}

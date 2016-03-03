@@ -16,6 +16,8 @@ public:
     void next();
     void keypressed(int key);
     void keyReleased(int key);
+    
+    void processRemoteCommand(int player, bool up, bool down, bool left, bool right, bool turbo);
 };
 
 #endif

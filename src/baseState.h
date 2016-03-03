@@ -2,10 +2,11 @@
 #define __State__
 
 #include "ofMain.h"
+#include "remoteCommands.h"
 
 class App;
 
-class BaseState
+class BaseState : public RemoteCommands
 {
     
 protected:
@@ -28,6 +29,7 @@ public:
     
     virtual void click(int x, int y){};
     
+
 };
 
 
