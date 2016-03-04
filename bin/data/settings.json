@@ -1,5 +1,5 @@
 {
-  "local_port" : 8001,
+  "local_port" : 8000,
   "remote_ip" : "localhost",
   "remote_port" : 8080,
   "width" : 1920,
@@ -7,6 +7,6 @@
   "scale" : 0.5,
   "player_0" : "Piloto 1",
   "player_1" : "Piloto 2",
-  "player_2" : "Piloto 3",
-  "player_3" : "Piloto 4"
+  "player_2" : "Pedrosa",
+  "player_3" : "Marquez"
  }

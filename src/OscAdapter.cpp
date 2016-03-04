@@ -32,8 +32,20 @@ void OscAdapter::update(ofEventArgs &args){
 void OscAdapter::processOscMessage(ofxOscMessage msg){
     
     
-    if(msg.getAddress() == "/player1"){
-        app->current_state->processRemoteCommand(0, false, false, true, true, false);
+    if(msg.getAddress() == "/player"){
+        
+        int player = ofToInt(msg.getArgAsString(0))  - 1;
+        bool down = !msg.getArgAsBool(4);
+        bool up = !msg.getArgAsBool(1);
+        bool left = !msg.getArgAsBool(3);
+        bool right = !msg.getArgAsBool(5);
+        bool turbo = !msg.getArgAsBool(2);
+        
+        app->current_state->processRemoteCommand(player, up, down, left, right, turbo);
+    
+        cout << player << up << down << left << right << turbo << endl;
+        
+        
     }
     
 }

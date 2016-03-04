@@ -101,16 +101,18 @@ void Bike::update(){
     }
     
     if(bTurnRight){
-        float newRotation = rotation - (_rotationStep * (speed / _maxSpeed));
+        float newRotation = rotation - (_rotationStep );
         setRotation(newRotation);
     }
     
     if(bTurnLeft){
-        float newRotation = rotation + (_rotationStep * (speed / _maxSpeed));
+        float newRotation = rotation + (_rotationStep );
         setRotation(newRotation);
     }
     
-    speed *= (speed < 0.003f) ? 0.0f : _friction;
+    
+    
+//    speed *= (speed < 0.003f) ? 0.0f : _friction;
     
     direction.x = sin(rotation);
     direction.y = cos(rotation);
@@ -172,44 +174,44 @@ float Bike::getTimeStuck(){
 
 
 void Bike::doBikeCollision(Bike* other){
-    for(int i = 0; i < collisionCircles.size(); i++){
-        CollisionPoint& circleA = collisionCircles[i];
-        ofVec2f posA = localToGlobal(circleA.position);
-        float radiusA = circleA.radius * scale;
-        
-        for(int j = 0; j < other->collisionCircles.size(); j++){
-            CollisionPoint& circleB = other->collisionCircles[j];
-            ofVec2f posB = other->localToGlobal(circleB.position);
-            float radiusB = circleB.radius * scale;
-            
-            float collisionDistance = radiusA + radiusB;
-            ofVec2f deltaBA(posA - posB);
-            float distance = deltaBA.length();
-            bool isColliding = distance < collisionDistance;
-            
-            if (isColliding) {
-                circleA.isColliding = true;
-                circleB.isColliding = true;
-                
-                // collision response
-                float overlap = collisionDistance - distance;
-                ofVec2f correctedBA = deltaBA.scale(overlap/2);
-                
-                this->position += correctedBA;
-                other->position -= correctedBA;
-                
-                //
-                //float pct = 1 - ABS(this->direction.dot(other->direction));
-                //this->speed -= (bikeHitFriction * pct);
-                //other->speed -= (bikeHitFriction * pct);
-                
-                this->speed *= bikeHitFriction;
-                other->speed *= bikeHitFriction;
-                
-                //return;
-            }
-        }
-    }
+//    for(int i = 0; i < collisionCircles.size(); i++){
+//        CollisionPoint& circleA = collisionCircles[i];
+//        ofVec2f posA = localToGlobal(circleA.position);
+//        float radiusA = circleA.radius * scale;
+//        
+//        for(int j = 0; j < other->collisionCircles.size(); j++){
+//            CollisionPoint& circleB = other->collisionCircles[j];
+//            ofVec2f posB = other->localToGlobal(circleB.position);
+//            float radiusB = circleB.radius * scale;
+//            
+//            float collisionDistance = radiusA + radiusB;
+//            ofVec2f deltaBA(posA - posB);
+//            float distance = deltaBA.length();
+//            bool isColliding = distance < collisionDistance;
+//            
+//            if (isColliding) {
+//                circleA.isColliding = true;
+//                circleB.isColliding = true;
+//                
+//                // collision response
+//                float overlap = collisionDistance - distance;
+//                ofVec2f correctedBA = deltaBA.scale(overlap/2);
+//                
+//                this->position += correctedBA;
+//                other->position -= correctedBA;
+//                
+//                //
+//                //float pct = 1 - ABS(this->direction.dot(other->direction));
+//                //this->speed -= (bikeHitFriction * pct);
+//                //other->speed -= (bikeHitFriction * pct);
+//                
+//                this->speed *= bikeHitFriction;
+//                other->speed *= bikeHitFriction;
+//                
+//                //return;
+//            }
+//        }
+//    }
 }
 
 
