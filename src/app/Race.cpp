@@ -36,6 +36,7 @@ Race::Race()
     ofAddListener(parametersDriving.parameterChangedE(), this, &Race::onParameterChange);
     ofAddListener(parametersCollision.parameterChangedE(), this, &Race::onParameterChange);
     ofAddListener(parametersPowerups.parameterChangedE(), this, &Race::onParameterChange);
+
     
     // init starting marks
     // TODO: load from json
@@ -44,8 +45,6 @@ Race::Race()
     startingMarks.push_back(StartingMark(1105, 148, PI/2));
     startingMarks.push_back(StartingMark(1054, 211, PI/2));
     
-    // init bikes
-    // TODO: load bike sprites from json
     bikes.push_back(new Bike(&assets->bike1));
     bikes.push_back(new Bike(&assets->bike1));
     bikes.push_back(new Bike(&assets->bike1));
@@ -125,7 +124,8 @@ void Race::draw() {
             player->bike->drawDebug(player->color);
         }
         finishingLine.draw();
-    }else{
+    }
+    else{
         assets->backgroundImg.draw(0,0);
         powerupsManager.draw();
         for(auto & player : players){
@@ -169,6 +169,7 @@ void Race::updateBikes(){
     
     for(auto bike : bikes){
         bike->update();
+
         bike->doNAACollision(&assets->collisionMap);
     }
     
@@ -221,6 +222,7 @@ void Race::updateRanking(){
         }
         
         const ofVec2f p = bike->getPosition();
+
         bool isInsideTrack = (assets->collisionMap.getPixels().getColor(p.x, p.y).r != 0);
         if (isInsideTrack){
             ofColor color = assets->progressMap.getPixels().getColor(p.x, p.y);

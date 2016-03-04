@@ -1,11 +1,12 @@
 #include "assets.h"
 
 void Assets::loadAssets(){
-    collisionMap.load("map.png");
-    progressMap.load("progess-map.png");
-    backgroundImg.load("background.png");
-    bike1.load("bike1.png");
+    loadImage(&collisionMap, "map.png");
+    loadImage(&progressMap, "progess-map.png");
+    loadImage(&bike1, "bike1.png");
+    loadImage(&backgroundImg, "background.png");
 }
+
 
 string Assets::getPlayerName(int i){
     return getData("player_" + ofToString(i)).asString();

@@ -4,7 +4,7 @@ BaseAssets::BaseAssets(){
     string path = ofToDataPath("settings.json");
     ofLogNotice() << "Loading settings from: " << path;
     settings.open(path);
-    default_font = "ProximaNova.otf";
+    default_font = "GT-Pressura-Mono.otf";
     ofTrueTypeFont::setGlobalDpi(72);
     clearFonts();
 }
@@ -15,15 +15,13 @@ void BaseAssets::clearFonts(){
 }
 
 void BaseAssets::loadVideo(ofVideoPlayer *video, string filename){
-    video->loadMovie(filename);
+    video->load(filename);
     ofLogNotice() << "Loading: " << filename;
     videos.push_back(video);
 }
 
-void BaseAssets::loadImage( string filename){
-    ofImage image;
-    image.loadImage(filename);
-    images[filename] = image;
+void BaseAssets::loadImage(ofImage *image, string filename){
+    image->load(filename);
     ofLogNotice() << "Loading: " << filename;
 }
 
@@ -66,7 +64,7 @@ string BaseAssets::getRemoteDataAddress(){
 
 void BaseAssets::loadFont(int size){
     fonts[size] = new ofTrueTypeFont();
-    fonts[size]->loadFont(default_font, size);
+    fonts[size]->load(default_font, size);
     fonts[size]->setLetterSpacing(1.1);
     fonts[size]->setSpaceSize(0.3);
     ofLogNotice() << "Loading font: " << default_font << " " << size << " pxs";
