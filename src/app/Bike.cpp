@@ -73,6 +73,8 @@ void Bike::reset(ofVec2f pos, float rot){
     
     stuckTimer = 0;
     stuckPrevTimer = 0;
+    
+    powerbar.reset();
 }
 
 

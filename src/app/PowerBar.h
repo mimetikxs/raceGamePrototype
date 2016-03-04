@@ -31,6 +31,11 @@ public:
         maxSpeed = 0.1;
         rotationStep = 0.1;
         
+        reset();
+    }
+    
+    
+    void reset(){
         elapsedTime = 0;
         lastElapsedTime = 0;
         totalDuration = TOTAL_DURATION;

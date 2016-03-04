@@ -17,6 +17,7 @@
 #include "LineSegment.h"
 #include "assets.h"
 #include "PowerUp.h"
+#include "PowerUpsManager.h"
 
 #define MAX_NUM_LAPS 5
 
@@ -99,7 +100,5 @@ private:
     string getElapsedTimeString();
     
     // power ups
-    vector<PowerUp*> powerups;
-    void updatePowerUps();
-    float lasttime; // debug: elapsed when powerup was deactivated
+    PowerUpsManager powerupsManager;
 };

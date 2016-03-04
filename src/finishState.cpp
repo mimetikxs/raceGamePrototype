@@ -18,7 +18,13 @@ finishState::~finishState(){};
 finishState::finishState(App *a):BaseState(a){
     BaseState::initialize();
     
-    //app->race.setup();
+    // disable bike controls
+    for(auto bike : app->race.bikes){
+        bike->bAccelerate = false;
+        bike->bTurnLeft = false;
+        bike->bTurnRight = false;
+        bike->bUsingPowerUp = false;
+    }
 };
 
 

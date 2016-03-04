@@ -9,6 +9,8 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Bike.h"
+
 
 class PowerUp {
     
@@ -26,6 +28,9 @@ public:
     PowerUp(float x, float y, float radius) {
         collisionPoint = new CollisionPoint(x, y, radius);
         active = false;
+    }
+    
+    void draw() {
     }
     
     void drawDebug() {

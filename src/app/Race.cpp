@@ -50,10 +50,6 @@ Race::Race()
     bikes.push_back(new Bike(&assets->bike1));
     bikes.push_back(new Bike(&assets->bike1));
     bikes.push_back(new Bike(&assets->bike1));
-    
-    // testing power ups
-    powerups.push_back( new PowerUp(527, 913, 20) );
-    powerups[0]->active = true;
 }
 
 
@@ -85,6 +81,9 @@ void Race::setup(){
         
         player->bike->reset(pos,rot);
     }
+    
+    // reset powerups
+    powerupsManager.reset();
 }
 
 
@@ -95,6 +94,8 @@ void Race::start() {
     bStarted = true;
     elapsedTime = 0;
     prevTime = ofGetElapsedTimeMillis();
+    
+    powerupsManager.reset();
 }
 
 
@@ -104,7 +105,7 @@ void Race::update(){
         checkStuck();
         
         if(!bFinished){
-            updatePowerUps();
+            powerupsManager.update(bikes);
             updateTimer();
             updateRanking(); // this can be updated at a diferent rate
         }
@@ -119,20 +120,14 @@ void Race::update(){
 void Race::draw() {
     if(bDrawDebug){
         assets->collisionMap.draw(0,0);
-        for(auto powerUp : powerups){
-            if(powerUp->active)
-                powerUp->drawDebug();
-        }
+        powerupsManager.draw();
         for(auto & player : players){
             player->bike->drawDebug(player->color);
         }
         finishingLine.draw();
     }else{
         assets->backgroundImg.draw(0,0);
-        for(auto powerUp : powerups){
-            if(powerUp->active)
-                powerUp->drawDebug();
-        }
+        powerupsManager.draw();
         for(auto & player : players){
             player->bike->draw(player->color);
         }
@@ -265,30 +260,6 @@ void Race::updateRanking(){
     }
     
     numLaps = highestLap;
-}
-
-
-
-void Race::updatePowerUps(){
-    // check collisions with bikes
-    for(auto powerUp : powerups){
-        if(powerUp->active){
-            for(auto bike : bikes){
-                if(powerUp->collides(bike)){
-                    bike->powerbar.addTime(5); // add 5 secods to power bar
-                    powerUp->active = false;
-                    
-                    lasttime = ofGetElapsedTimef();
-                }
-            }
-        }
-    }
-    
-    // TODO: proper logic to activate/deactivate powerups
-    float idleTime = ofGetElapsedTimef() - lasttime;
-    if(idleTime > 10){
-        powerups[0]->active = true;
-    }
 }
 
 
