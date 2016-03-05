@@ -47,6 +47,9 @@ void runningState::keypressed(int key){
         case OF_KEY_RIGHT:
             bike1.bTurnRight = true;
             break;
+        case OF_KEY_DOWN:
+            bike1.bPullover = true;
+            break;
         case '0':
             bike1.activatePower();
             break;
@@ -59,6 +62,9 @@ void runningState::keypressed(int key){
             break;
         case 'd':
             bike2.bTurnRight = true;
+            break;
+        case 's':
+            bike2.bPullover = true;
             break;
         case '1':
             bike2.activatePower();
@@ -91,6 +97,9 @@ void runningState::keyReleased(int key){
         case OF_KEY_RIGHT:
             bike1.bTurnRight = false;
             break;
+        case OF_KEY_DOWN:
+            bike1.bPullover = false;
+            break;
         case '0':
             bike1.deactivatePower();
             break;
@@ -103,6 +112,9 @@ void runningState::keyReleased(int key){
             break;
         case 'd':
             bike2.bTurnRight = false;
+            break;
+        case 's':
+            bike2.bPullover = false;
             break;
         case '1':
             bike2.deactivatePower();

@@ -57,7 +57,7 @@ public:
     ofVec2f localToGlobal(ofVec2f& localPoint);
     
     // controls
-    bool bAccelerate, bTurnLeft, bTurnRight;
+    bool bAccelerate, bTurnLeft, bTurnRight, bPullover;
     
     // driving physics
     float acceleration;
@@ -75,7 +75,6 @@ public:
     
     // power ups
     bool bUsingPowerUp;
-    float powerUpTotalDuration;
     
     // illegal actions
     float stuckTimer;

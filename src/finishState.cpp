@@ -29,7 +29,6 @@ finishState::finishState(App *a):BaseState(a){
 
 
 void finishState::update(){
-    app->race.update();
     app->countDown.update();
     if (app->countDown.isFinished()) {
         next();

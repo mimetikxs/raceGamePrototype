@@ -80,40 +80,36 @@ void Bike::reset(ofVec2f pos, float rot){
 
 void Bike::update(){
     float _acceleration;
-    float _friction;
     float _maxSpeed;
     float _rotationStep;
     
     if(powerbar.isActive()){
         // power up values
         _acceleration = powerbar.acceleration;
-        //_friction = powerbar.friction;
         _maxSpeed = powerbar.maxSpeed;
         _rotationStep = powerbar.rotationStep;
     }else{
         // normal values
         _acceleration = acceleration;
-        //_friction = friction;
         _maxSpeed = maxSpeed;
         _rotationStep = rotationStep;
     }
     
-    //if(bAccelerate){
-        speed += (speed < _maxSpeed) ? _acceleration : 0;
-    //}
+    speed += (speed < _maxSpeed) ? _acceleration : 0;
     
     if(bTurnRight){
-        float newRotation = rotation - _rotationStep; // * (speed / _maxSpeed)
+        float newRotation = rotation - _rotationStep;
         setRotation(newRotation);
     }
     
     if(bTurnLeft){
-        float newRotation = rotation + _rotationStep; // * (speed / _maxSpeed)
+        float newRotation = rotation + _rotationStep;
         setRotation(newRotation);
     }
     
-    // if(bPullover)
+    //if(bPullover){
         speed *= (speed < 0.003f) ? 0.0f : friction;
+    //}
     
     direction.x = sin(rotation);
     direction.y = cos(rotation);
