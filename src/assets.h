@@ -35,6 +35,7 @@ public:
     ofImage helmet2;
     ofImage helmet3;
     ofImage helmet4;
+    ofImage& getHelmet(int i);
     
     ofImage powerup1;
     ofImage powerup2;

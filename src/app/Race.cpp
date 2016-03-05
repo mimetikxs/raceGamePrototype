@@ -44,10 +44,10 @@ Race::Race()
     startingMarks.push_back(StartingMark(1105, 148, PI/2));
     startingMarks.push_back(StartingMark(1054, 211, PI/2));
     
-    bikes.push_back(new Bike(&assets->bike1));
-    bikes.push_back(new Bike(&assets->bike1));
-    bikes.push_back(new Bike(&assets->bike1));
-    bikes.push_back(new Bike(&assets->bike1));
+    bikes.push_back(new Bike(&assets->bike1, &assets->bikeGlow));
+    bikes.push_back(new Bike(&assets->bike2, &assets->bikeGlow));
+    bikes.push_back(new Bike(&assets->bike3, &assets->bikeGlow));
+    bikes.push_back(new Bike(&assets->bike4, &assets->bikeGlow));
 }
 
 
@@ -65,10 +65,11 @@ void Race::setup(){
     for(int i = 0; i < 4; i++){
         string name = assets->getPlayerName(i);
         ofColor color = assets->getPlayerColor(i);
+        ofImage* helmet = &assets->getHelmet(i);
         int ranking = i;
         
         if(name != ""){
-            players.push_back(new Player(name, bikes[i], color, ranking));
+            players.push_back(new Player(name, bikes[i], helmet, color, ranking));
         }
     }
     

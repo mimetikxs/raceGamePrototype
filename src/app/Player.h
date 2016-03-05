@@ -17,9 +17,10 @@ class Player {
     
 public:
   
-    Player(string _name, Bike* _bike, ofColor _color, int _rankPos)
+    Player(string _name, Bike* _bike, ofImage* _helmet, ofColor _color, int _rankPos)
     :name(_name)
     ,bike(_bike)
+    ,helmet(_helmet)
     ,color(_color)
     ,rankPos(_rankPos)
     ,completedLaps(0)
@@ -37,4 +38,6 @@ public:
     float lapPercent;
     
     Bike* bike;
+    
+    ofImage* helmet;
 };

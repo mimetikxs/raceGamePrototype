@@ -31,7 +31,7 @@ class Bike {
     
 public:
     
-    Bike(ofImage* image);
+    Bike(ofImage* image, ofImage* glow);
     
     void reset(ofVec2f pos, float rot);
     
@@ -98,6 +98,7 @@ private:
     
     float length, width;
     ofImage* image;
+    ofImage* glow;
     ofVboMesh mesh;
     
     // rect corners

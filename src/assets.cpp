@@ -62,6 +62,26 @@ ofColor Assets::getPlayerColor(int i){
     }
 }
 
+ofImage& Assets::getHelmet(int i){
+    switch (i) {
+        case 0:
+            return helmet1;
+            break;
+        case 1:
+            return helmet2;
+            break;
+        case 2:
+            return helmet3;
+            break;
+        case 3:
+            return helmet4;
+            break;
+        default:
+            return helmet1;
+            break;
+    }
+}
+
 int Assets::getNumLaps(){
     return getData("num_laps").asInt();
 }

@@ -12,8 +12,9 @@
 #define TO_DEGREES 180.f/PI
 
 
-Bike::Bike(ofImage* img){
+Bike::Bike(ofImage* img, ofImage* _glow){
     image = img;
+    glow = _glow;
     
     acceleration = 0.4;
     friction = 0.85;
@@ -239,7 +240,12 @@ void Bike::draw(ofColor color){
     ofRotate(-rotation * TO_DEGREES);
     ofScale(scale, scale);
     
-    ofSetColor(color);
+    if(powerbar.isActive()){
+        glow->getTexture().setTextureMinMagFilter(GL_LINEAR,GL_LINEAR);
+        glow->bind();
+        mesh.draw();
+        glow->unbind();
+    }
     
     image->getTexture().setTextureMinMagFilter(GL_LINEAR,GL_LINEAR);
     image->bind();
