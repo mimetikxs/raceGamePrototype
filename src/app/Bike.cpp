@@ -112,9 +112,7 @@ void Bike::update(){
         setRotation(newRotation);
     }
     
-    
-    
-//    speed *= (speed < 0.003f) ? 0.0f : _friction;
+    speed *= (speed < 0.003f) ? 0.0f : _friction;
     
     direction.x = sin(rotation);
     direction.y = cos(rotation);
