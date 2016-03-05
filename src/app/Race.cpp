@@ -205,6 +205,17 @@ void Race::checkStuck(){
     }
 }
 
+// sorting function
+bool sortByRank(Player* a , Player* b){
+    float completedA = a->completedLaps + a->lapPercent;
+    float completedB = b->completedLaps + b->lapPercent;
+    if (completedA > completedB){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 void Race::updateRanking(){
     for(auto player : players){
@@ -232,24 +243,15 @@ void Race::updateRanking(){
         }
     }
     
-    // sort player ranking
-    for(int i = 0; i < players.size(); i++){
-        Player* playerA = players[i];
-        int rankA = playerA->rankPos;
-        float completedA = playerA->completedLaps + playerA->lapPercent;
-        
-        for(int j = i+1; j < players.size(); j++){
-            Player* playerB = players[j];
-            int rankB = playerB->rankPos;
-            float completedB = playerB->completedLaps + playerB->lapPercent;
-            
-            if((completedA > completedB  &&  rankA > rankB)
-               || (completedA < completedB  &&  rankA < rankB)){
-                playerA->rankPos = rankB;
-                playerB->rankPos = rankA;
-            }
-        }
+    // sort
+    vector<Player*> sorted(players);
+    ofSort(sorted, sortByRank);
+    for(int i = 0; i < sorted.size(); i++){
+        sorted[i]->rankPos = i;
     }
+    
+    
+    cout << players[0]->rankPos << " - " << players[1]->rankPos << " - " << players[2]->rankPos << " - " << players[3]->rankPos << endl;
     
     // update race's completed laps
     int highestLap = 0;
