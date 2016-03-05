@@ -16,7 +16,7 @@ public:
     static Assets* getInstance();
     void loadAssets();
     
-
+    int getNumLaps();
     ofImage backgroundImg;
     ofImage collisionMap;
     ofImage progressMap;

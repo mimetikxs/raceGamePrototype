@@ -8,7 +8,6 @@
 
 #include "Race.h"
 
-#define MAX_NUM_LAPS 5
 
 
 Race::Race()
@@ -109,7 +108,7 @@ void Race::update(){
             updateRanking(); // this can be updated at a diferent rate
         }
         
-        if(numLaps == MAX_NUM_LAPS){
+        if(numLaps == assets->getNumLaps()){
             bFinished = true;
         }
     }
@@ -160,7 +159,7 @@ void Race::drawInfo(){
         ofPopStyle();
     }
     
-    ofDrawBitmapStringHighlight("LAP: " + ofToString(numLaps) + "/" + ofToString(MAX_NUM_LAPS), 1244, 888);
+    ofDrawBitmapStringHighlight("LAP: " + ofToString(numLaps) + "/" + ofToString(assets->getNumLaps()), 1244, 888);
 }
 
 

@@ -32,3 +32,7 @@ ofColor Assets::getPlayerColor(int i){
             break;
     }
 }
+
+int Assets::getNumLaps(){
+    return 5;
+}

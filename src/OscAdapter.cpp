@@ -35,11 +35,11 @@ void OscAdapter::processOscMessage(ofxOscMessage msg){
     if(msg.getAddress() == "/player"){
         
         int player = ofToInt(msg.getArgAsString(0))  - 1;
-        bool down = !msg.getArgAsBool(4);
         bool up = !msg.getArgAsBool(1);
-        bool left = !msg.getArgAsBool(3);
-        bool right = !msg.getArgAsBool(5);
-        bool turbo = !msg.getArgAsBool(2);
+        bool down = !msg.getArgAsBool(2);
+        bool right = !msg.getArgAsBool(3);
+        bool left = !msg.getArgAsBool(4);
+        bool turbo = !msg.getArgAsBool(5);
         
         app->current_state->processRemoteCommand(player, up, down, left, right, turbo);
     

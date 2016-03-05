@@ -19,7 +19,6 @@
 #include "PowerUp.h"
 #include "PowerUpsManager.h"
 
-#define MAX_NUM_LAPS 5
 
 
 class StartingMark{
@@ -83,7 +82,7 @@ public:
     ofParameter<float> pu_rotationStep;
     
     void onParameterChange(ofAbstractParameter& param);
-    
+
     
 private:
     Assets *assets;

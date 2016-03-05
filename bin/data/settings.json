@@ -5,6 +5,7 @@
   "width" : 1920,
   "height" :1080,
   "scale" : 0.5,
+  "num_laps" : 5,
   "player_0" : "Piloto 1",
   "player_1" : "Piloto 2",
   "player_2" : "Pedrosa",
