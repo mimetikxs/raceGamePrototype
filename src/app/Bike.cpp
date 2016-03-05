@@ -87,32 +87,33 @@ void Bike::update(){
     if(powerbar.isActive()){
         // power up values
         _acceleration = powerbar.acceleration;
-        _friction = powerbar.friction;
+        //_friction = powerbar.friction;
         _maxSpeed = powerbar.maxSpeed;
         _rotationStep = powerbar.rotationStep;
     }else{
         // normal values
         _acceleration = acceleration;
-        _friction = friction;
+        //_friction = friction;
         _maxSpeed = maxSpeed;
         _rotationStep = rotationStep;
     }
     
-    if(bAccelerate){
+    //if(bAccelerate){
         speed += (speed < _maxSpeed) ? _acceleration : 0;
-    }
+    //}
     
     if(bTurnRight){
-        float newRotation = rotation - (_rotationStep * (speed / _maxSpeed));
+        float newRotation = rotation - _rotationStep; // * (speed / _maxSpeed)
         setRotation(newRotation);
     }
     
     if(bTurnLeft){
-        float newRotation = rotation + (_rotationStep * (speed / _maxSpeed));
+        float newRotation = rotation + _rotationStep; // * (speed / _maxSpeed)
         setRotation(newRotation);
     }
     
-    speed *= (speed < 0.003f) ? 0.0f : _friction;
+    // if(bPullover)
+        speed *= (speed < 0.003f) ? 0.0f : friction;
     
     direction.x = sin(rotation);
     direction.y = cos(rotation);
@@ -174,6 +175,8 @@ float Bike::getTimeStuck(){
 
 
 void Bike::doBikeCollision(Bike* other){
+    return;
+    
     for(int i = 0; i < collisionCircles.size(); i++){
         CollisionPoint& circleA = collisionCircles[i];
         ofVec2f posA = localToGlobal(circleA.position);
@@ -200,13 +203,9 @@ void Bike::doBikeCollision(Bike* other){
                 this->position += correctedBA;
                 other->position -= correctedBA;
                 
-                //
-                //float pct = 1 - ABS(this->direction.dot(other->direction));
-                //this->speed -= (bikeHitFriction * pct);
-                //other->speed -= (bikeHitFriction * pct);
-                
-                this->speed *= bikeHitFriction;
-                other->speed *= bikeHitFriction;
+                // uncomment this to add a speed penalty
+//                this->speed *= bikeHitFriction;
+//                other->speed *= bikeHitFriction;
                 
                 //return;
             }

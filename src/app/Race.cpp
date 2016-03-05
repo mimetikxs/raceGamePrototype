@@ -93,6 +93,8 @@ void Race::start() {
     elapsedTime = 0;
     prevTime = ofGetElapsedTimeMillis();
     
+    rankLastTime = ofGetElapsedTimef();
+    
     powerupsManager.reset();
 }
 
@@ -100,12 +102,16 @@ void Race::start() {
 void Race::update(){
     if(bStarted){
         updateBikes();
+        updatePlayers();
         checkStuck();
         
         if(!bFinished){
             powerupsManager.update(bikes);
             updateTimer();
-            updateRanking(); // this can be updated at a diferent rate
+            if(ofGetElapsedTimef()-rankLastTime > 1){
+                updateRanking(); // update once every second
+                rankLastTime = ofGetElapsedTimef();
+            }
         }
         
         if(numLaps == assets->getNumLaps()){
@@ -217,7 +223,7 @@ bool sortByRank(Player* a , Player* b){
 }
 
 
-void Race::updateRanking(){
+void Race::updatePlayers(){
     for(auto player : players){
         Bike * bike = player->bike;
         
@@ -232,7 +238,7 @@ void Race::updateRanking(){
         }
         
         const ofVec2f p = bike->getPosition();
-
+        
         bool isInsideTrack = (assets->collisionMap.getPixels().getColor(p.x, p.y).r != 0);
         if (isInsideTrack){
             ofColor color = assets->progressMap.getPixels().getColor(p.x, p.y);
@@ -242,16 +248,15 @@ void Race::updateRanking(){
             player->lapPercent = percent;
         }
     }
-    
-    // sort
+}
+
+
+void Race::updateRanking(){
     vector<Player*> sorted(players);
     ofSort(sorted, sortByRank);
     for(int i = 0; i < sorted.size(); i++){
         sorted[i]->rankPos = i;
     }
-    
-    
-    cout << players[0]->rankPos << " - " << players[1]->rankPos << " - " << players[2]->rankPos << " - " << players[3]->rankPos << endl;
     
     // update race's completed laps
     int highestLap = 0;

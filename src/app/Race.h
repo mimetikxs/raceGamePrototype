@@ -92,9 +92,12 @@ private:
     uint64_t prevTime;
     uint64_t elapsedTime;
     
+    float rankLastTime;
+    
     int numLaps;
     
     void updateBikes();
+    void updatePlayers();
     void updateRanking();
     void updateTimer();
     void checkStuck();
