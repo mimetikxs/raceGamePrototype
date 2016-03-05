@@ -17,14 +17,42 @@ public:
     void loadAssets();
     
     int getNumLaps();
-    ofImage backgroundImg;
-    ofImage collisionMap;
-    ofImage progressMap;
-    ofImage bike1;
     
     string getPlayerName(int i);
     ofColor getPlayerColor(int i);
     
+    ofImage backgroundImg;
+    ofImage collisionMap;
+    ofImage progressMap;
+    
+    ofImage bike1;
+    ofImage bike2;
+    ofImage bike3;
+    ofImage bike4;
+    ofImage bikeGlow;
+    
+    ofImage helmet1;
+    ofImage helmet2;
+    ofImage helmet3;
+    ofImage helmet4;
+    
+    ofImage powerup1;
+    ofImage powerup2;
+    ofImage powerup3;
+    ofImage powerup4;
+    ofImage powerupGlow1;
+    ofImage powerupGlow2;
+    ofImage powerupGlow3;
+    ofImage powerupGlow4;
+    
+    ofImage panelPower;
+    ofImage powerBar;
+    
+    ofImage panelRanking;
+    
+    ofImage panelWinners;
+    
+    ofImage panelLaps;
 };
 
 #endif

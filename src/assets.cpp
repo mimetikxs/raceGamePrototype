@@ -1,10 +1,38 @@
 #include "assets.h"
 
 void Assets::loadAssets(){
-    loadImage(&collisionMap, "map.png");
-    loadImage(&progressMap, "progess-map.png");
-    loadImage(&bike1, "bike1.png");
-    loadImage(&backgroundImg, "background.png");
+    loadImage(&collisionMap, "images/map.png");
+    loadImage(&progressMap, "images/progess-map.png");
+    loadImage(&backgroundImg, "images/background.png");
+    
+    loadImage(&bike1, "images/bikes/bike1.png");
+    loadImage(&bike2, "images/bikes/bike2.png");
+    loadImage(&bike3, "images/bikes/bike3.png");
+    loadImage(&bike4, "images/bikes/bike4.png");
+    loadImage(&bikeGlow, "images/bikes/bikeGlow.png");
+    
+    loadImage(&helmet1, "images/helmets/helmet1.png");
+    loadImage(&helmet2, "images/helmets/helmet2.png");
+    loadImage(&helmet3, "images/helmets/helmet3.png");
+    loadImage(&helmet4, "images/helmets/helmet4.png");
+    
+    loadImage(&powerup1, "images/powerups/powerup1.png");
+    loadImage(&powerup2, "images/powerups/powerup2.png");
+    loadImage(&powerup3, "images/powerups/powerup3.png");
+    loadImage(&powerup4, "images/powerups/powerup4.png");
+    loadImage(&powerupGlow1, "images/powerups/powerup1-glow.png");
+    loadImage(&powerupGlow2, "images/powerups/powerup2-glow.png");
+    loadImage(&powerupGlow3, "images/powerups/powerup3-glow.png");
+    loadImage(&powerupGlow4, "images/powerups/powerup4-glow.png");
+    
+    loadImage(&panelPower, "images/panel-power/panelPower.png");
+    loadImage(&panelPower, "images/panel-power/powerBar.png");
+    
+    loadImage(&panelRanking, "images/panel-ranking.png");
+    
+    loadImage(&panelWinners, "images/panel-winners.png");
+    
+    loadImage(&panelLaps, "images/laps.png");
 }
 
 
