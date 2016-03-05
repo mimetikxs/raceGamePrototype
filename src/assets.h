@@ -45,6 +45,7 @@ public:
     ofImage powerupGlow2;
     ofImage powerupGlow3;
     ofImage powerupGlow4;
+    vector<ofImage*> getRandomPowerupImage();
     
     ofImage panelPower;
     ofImage powerBar;

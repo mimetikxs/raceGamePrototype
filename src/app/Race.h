@@ -18,6 +18,7 @@
 #include "assets.h"
 #include "PowerUp.h"
 #include "PowerUpsManager.h"
+#include "PanelPower.h"
 
 
 
@@ -103,5 +104,8 @@ private:
     void checkStuck();
     string getElapsedTimeString();
     
+    
+    // panels
+    PanelPower panelPower;
     
 };

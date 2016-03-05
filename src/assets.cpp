@@ -62,6 +62,7 @@ ofColor Assets::getPlayerColor(int i){
     }
 }
 
+
 ofImage& Assets::getHelmet(int i){
     switch (i) {
         case 0:
@@ -81,6 +82,40 @@ ofImage& Assets::getHelmet(int i){
             break;
     }
 }
+
+
+vector<ofImage*> Assets::getRandomPowerupImage(){
+    int i = ofRandom(4);
+    vector<ofImage*> img;
+    switch (i) {
+        case 0:
+            img.push_back(&powerup1);
+            img.push_back(&powerupGlow1);
+            return img;
+            break;
+        case 1:
+            img.push_back(&powerup2);
+            img.push_back(&powerupGlow2);
+            return img;
+            break;
+        case 2:
+            img.push_back(&powerup3);
+            img.push_back(&powerupGlow3);
+            return img;
+            break;
+        case 3:
+            img.push_back(&powerup4);
+            img.push_back(&powerupGlow4);
+            return img;
+            break;
+        default:
+            img.push_back(&powerup1);
+            img.push_back(&powerupGlow1);
+            return img;
+            break;
+    }
+}
+
 
 int Assets::getNumLaps(){
     return getData("num_laps").asInt();

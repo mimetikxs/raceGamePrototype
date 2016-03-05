@@ -12,6 +12,7 @@
 
 Race::Race()
 : finishingLine(1333, 79, 1333, 286)
+, panelPower(players)
 {
     assets = Assets::getInstance();
     

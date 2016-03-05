@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "PowerUp.h"
+#include "assets.h"
 
 
 #define POWER_SECONDS 5.f           // seconds that powerups add to the power bar
@@ -22,6 +23,8 @@ class PowerUpsManager {
 
     
 public:
+    
+    Assets* assets;
     
     ofParameterGroup parameters;
     ofParameter<float> powerSeconds;
@@ -54,6 +57,8 @@ public:
         parameters.add( powerSeconds.set("added seconds", POWER_SECONDS, 1, 10));
         parameters.add( interval.set("show interval", SHOW_INTERVAL, 1, 15));
         parameters.add( maxNumPowerups.set("max powerups", MAX_POWERUPS, 1, 10));
+        
+        assets = Assets::getInstance();
         
         reset();
     }
@@ -96,7 +101,7 @@ public:
     void draw(){
         for(auto powerUp : powerups){
             if(powerUp->active){
-                powerUp->drawDebug();
+                powerUp->draw();
             }
         }
     }
@@ -128,6 +133,8 @@ private:
         
         // activate the powerup
         if(isValid){
+            cout << "new powerup" << endl;
+            powerup->setImage(assets->getRandomPowerupImage());
             powerup->active = true;
             activeCount++;
         }else{

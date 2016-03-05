@@ -10,30 +10,44 @@
 
 #include "ofMain.h"
 #include "Bike.h"
+#include "assets.h"
 
 
 class PowerUp {
     
 public:
     
-    ofImage* image;
+    vector<ofImage*> image;
     CollisionPoint* collisionPoint;
-    
     bool active;
     
-//    PowerUp(float x, float y, ofImage* img) {
-//        float radius = img->getWidth();
-//        collisionPoint = new CollisionPoint(x, y, )
-//    }
+    
     PowerUp(float x, float y, float radius) {
         collisionPoint = new CollisionPoint(x, y, radius);
         active = false;
     }
     
-    void draw() {
+    
+    void setImage(vector<ofImage*> img){
+        image = img;
     }
     
-    void drawDebug() {
+    
+    void draw(){
+        float halfW = image[0]->getWidth()/2;
+        float halfH = image[0]->getHeight()/2;
+        ofVec2f p = collisionPoint->position;
+        
+        ofPushStyle();
+        ofSetColor(255, ofMap(sin(ofGetElapsedTimef()*6), -1, 1, 0, 255));
+        image[1]->draw(p.x-halfW, p.y-halfH); //glow
+        ofPopStyle();
+        
+        image[0]->draw(p.x-halfW, p.y-halfH);
+    }
+    
+    
+    void drawDebug(){
         ofPushStyle();
         if(collisionPoint->isColliding){
             ofNoFill();
@@ -47,6 +61,7 @@ public:
         ofDrawCircle(p.x, p.y, r);
         ofPopStyle();
     }
+    
     
     bool collides(Bike* bike){
         ofVec2f posA = collisionPoint->position;
@@ -69,7 +84,6 @@ public:
                 return true;
             }
         }
-        
         return false;
     }
     
