@@ -34,5 +34,5 @@ ofColor Assets::getPlayerColor(int i){
 }
 
 int Assets::getNumLaps(){
-    return 5;
+    return getData("num_laps").asInt();
 }
