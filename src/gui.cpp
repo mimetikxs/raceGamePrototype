@@ -55,5 +55,6 @@ void Gui::init(){
     gui.add(app->race.parametersCollision);
     gui.add(app->race.parametersMisc);
     gui.add(app->race.parametersPowerups);
+    gui.add(app->race.powerupsManager.parameters);
 }
 

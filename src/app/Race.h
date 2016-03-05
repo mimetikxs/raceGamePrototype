@@ -57,6 +57,8 @@ public:
     vector<Bike*> bikes;
     vector<Player*> players;
     
+    PowerUpsManager powerupsManager;
+    
     ofParameterGroup parametersDriving;
     ofParameter<float> acceleration;
     ofParameter<float> friction;
@@ -99,6 +101,5 @@ private:
     void checkStuck();
     string getElapsedTimeString();
     
-    // power ups
-    PowerUpsManager powerupsManager;
+    
 };

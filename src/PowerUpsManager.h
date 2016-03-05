@@ -23,6 +23,12 @@ class PowerUpsManager {
     
 public:
     
+    ofParameterGroup parameters;
+    ofParameter<float> powerSeconds;
+    ofParameter<float> interval;
+    ofParameter<float> maxNumPowerups;
+    ofParameter<float> safeDist;
+    
     
     PowerUpsManager(){
         powerups.push_back( new PowerUp(1260, 137, 20) );
@@ -44,6 +50,11 @@ public:
         powerups.push_back( new PowerUp(937, 221, 20) );
         powerups.push_back( new PowerUp(1107, 641, 20) );
         
+        parameters.setName("powerups manager");
+        parameters.add( powerSeconds.set("added seconds", POWER_SECONDS, 1, 10));
+        parameters.add( interval.set("show interval", SHOW_INTERVAL, 1, 15));
+        parameters.add( maxNumPowerups.set("max powerups", MAX_POWERUPS, 1, 10));
+        
         reset();
     }
     
@@ -63,7 +74,7 @@ public:
             if(powerUp->active){
                 for(auto bike : bikes){
                     if(powerUp->collides(bike)){
-                        bike->powerbar.addTime(POWER_SECONDS); // add 5 secods to power bar
+                        bike->powerbar.addTime(powerSeconds); // add 5 secods to power bar
                         powerUp->active = false;
                         activeCount--;
                     }
@@ -73,8 +84,8 @@ public:
         
         // activate new powerups
         float idleTime = ofGetElapsedTimef() - lasttime;
-        if(idleTime > SHOW_INTERVAL){
-            if(activeCount < MAX_POWERUPS  &&  activeCount < powerups.size()){
+        if(idleTime > interval){
+            if(activeCount < maxNumPowerups  &&  activeCount < powerups.size()){
                 showNewPowerUp(bikes);
             }
             lasttime = ofGetElapsedTimef();
