@@ -77,7 +77,7 @@ public:
     
     ofParameterGroup parametersPowerups;
     ofParameter<float> pu_acceleration;
-    ofParameter<float> pu_friction;
+    //ofParameter<float> pu_friction;
     ofParameter<float> pu_maxSpeed;
     ofParameter<float> pu_rotationStep;
     

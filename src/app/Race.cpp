@@ -28,7 +28,7 @@ Race::Race()
     parametersMisc.add( maxStuckTime.set("max stuck time", 3, 0, 5) );
     parametersMisc.add( bDrawDebug.set("debug mode", true) );
     parametersPowerups.add( pu_acceleration.set("pu acceleration", 0.4, 0.0, 2.0) );
-    parametersPowerups.add( pu_friction.set("pu friction", 0.85, 0.5, 0.999) );
+//    parametersPowerups.add( pu_friction.set("pu friction", 0.85, 0.5, 0.999) );
     parametersPowerups.add( pu_maxSpeed.set("pu max speed", 2.0, 1.0, 50.0) );
     parametersPowerups.add( pu_rotationStep.set("pu rotation step", 0.17, 0.0001, 1.0) );
     

@@ -175,8 +175,6 @@ float Bike::getTimeStuck(){
 
 
 void Bike::doBikeCollision(Bike* other){
-    return;
-    
     for(int i = 0; i < collisionCircles.size(); i++){
         CollisionPoint& circleA = collisionCircles[i];
         ofVec2f posA = localToGlobal(circleA.position);
