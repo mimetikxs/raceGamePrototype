@@ -207,8 +207,10 @@ void Race::checkStuck(){
             float rot = startingMarks[player->rankPos].rotation;
             bike->setPosition(pos.x, pos.y);
             bike->setRotation(rot);
+            player->completedLaps -= 1;
         }
     }
+    
 }
 
 // sorting function
@@ -232,8 +234,6 @@ void Race::updatePlayers(){
         float prevDistance = finishingLine.getDistance(prevPos);
         float currentDistance = finishingLine.getDistance(bike->getFrontPos());
         if(prevDistance < 0  && currentDistance >= 0){
-            
-            // update completed laps
             player->completedLaps += 1;
         }
         
