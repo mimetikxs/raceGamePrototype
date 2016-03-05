@@ -51,6 +51,7 @@ public:
     ofImage panelRanking;
     
     ofImage panelWinners;
+    ofImage cup;
     
     ofImage panelLaps;
 };

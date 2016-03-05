@@ -31,6 +31,7 @@ void Assets::loadAssets(){
     loadImage(&panelRanking, "images/panel-ranking.png");
     
     loadImage(&panelWinners, "images/panel-winners.png");
+    loadImage(&cup, "images/cup.png");
     
     loadImage(&panelLaps, "images/laps.png");
 }
