@@ -18,7 +18,7 @@
 #include "assets.h"
 #include "PowerUp.h"
 #include "PowerUpsManager.h"
-
+#include "PlayerAttributes.h"
 
 
 class StartingMark{
@@ -102,5 +102,7 @@ private:
     void updateTimer();
     void checkStuck();
     string getElapsedTimeString();
+    
+    map<string, PlayerAttributes> playerAttributes;
     
 };

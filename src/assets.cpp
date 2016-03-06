@@ -56,46 +56,8 @@ int Assets::getPlayerPosition(int i){
     return getData("player_" + ofToString(i))["position"].asInt();
 }
 
-
-ofColor Assets::getPlayerColor(int i){
-    switch (i) {
-        case 0:
-            return ofColor::mediumOrchid;
-            break;
-        case 1:
-            return ofColor::mediumSeaGreen;
-            break;
-        case 2:
-            return ofColor::mediumTurquoise;
-            break;
-        case 3:
-            return ofColor::sandyBrown;
-            break;
-        default:
-            return ofColor();
-            break;
-    }
-}
-
-
-ofImage& Assets::getHelmet(int i){
-    switch (i) {
-        case 0:
-            return helmet1;
-            break;
-        case 1:
-            return helmet2;
-            break;
-        case 2:
-            return helmet3;
-            break;
-        case 3:
-            return helmet4;
-            break;
-        default:
-            return helmet1;
-            break;
-    }
+string Assets::getPlayerAttributes(int i){
+    return getData("player_" + ofToString(i))["color"].asString();
 }
 
 

@@ -52,7 +52,7 @@ void TimesPanel::draw(){
     ofVec2f pos(45,27);
     for(auto player : sorted){
         // draw rank and name in color
-        ofSetColor(player->color);
+        ofSetColor(player->textColor);
         
         string rankPos = ofToString(player->rankPos + 1);
         string name = ofToUpper(player->name);
