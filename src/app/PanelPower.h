@@ -39,25 +39,4 @@ private:
     void drawPowerBar(int index);
     
     Assets* assets;
-    
-//    void keyPressed(ofKeyEventArgs& eventArgs){
-//        int key = eventArgs.key;
-//        switch (key) {
-//            case OF_KEY_UP:
-//                p.y--;
-//                break;
-//            case OF_KEY_DOWN:
-//                p.y++;
-//                break;
-//            case OF_KEY_LEFT:
-//                p.x--;
-//                break;
-//            case OF_KEY_RIGHT:
-//                p.x++;
-//                break;
-//            default:
-//                break;
-//        }
-//        cout << p << endl;
-//    }
 };

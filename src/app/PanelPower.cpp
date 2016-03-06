@@ -29,8 +29,6 @@ PanelPower::PanelPower(){
     mask.addVertex(ofVec3f(164, 22, 0));
     mask.addTriangle(0, 1, 2);
     mask.addTriangle(0, 2, 3);
-    
-    //ofAddListener(ofEvents().keyPressed, this, &PanelPower::keyPressed);
 }
 
 

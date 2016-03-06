@@ -237,6 +237,8 @@ void Race::updatePlayers(){
         float currentDistance = finishingLine.getDistance(bike->getFrontPos());
         if(prevDistance < 0  && currentDistance >= 0){
             player->completedLaps += 1;
+            
+            updateRanking();
         }
         
         const ofVec2f p = bike->getPosition();
