@@ -29,12 +29,16 @@ void Assets::loadAssets(){
     loadImage(&panelPower1, "images/panel-power/panelPower1.png");
     loadImage(&powerBar, "images/panel-power/powerBar.png");
     
-    loadImage(&panelRanking, "images/panel-ranking.png");
+    loadImage(&panelRankingBack, "images/ranking/rankingBack.png");
     
-    loadImage(&panelWinners, "images/panel-winners.png");
-    loadImage(&cup, "images/cup.png");
+    loadImage(&panelWinnersBack, "images/winners/winnersBack.png");
+    loadImage(&panelWinnersFront, "images/winners/winnersFront.png");
     
-    loadImage(&panelLaps, "images/laps.png");
+    loadImage(&cupBack, "images/cup/cupBack.png");
+    loadImage(&cupFront, "images/cup/cupFront.png");
+    
+    loadImage(&panelLapsBack, "images/laps/lapsBack.png");
+    loadImage(&panelLapsFront, "images/laps/lapsFront.png");
     
     for(int i = 0; i < 4; i++){
         motorSound[i].load("motorcycle.wav");

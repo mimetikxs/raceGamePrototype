@@ -52,12 +52,17 @@ public:
     ofImage panelPower1;
     ofImage powerBar;
     
-    ofImage panelRanking;
+    ofImage panelRankingBack;
+    ofImage panelRankingFront;
     
-    ofImage panelWinners;
-    ofImage cup;
+    ofImage panelWinnersBack;
+    ofImage panelWinnersFront;
     
-    ofImage panelLaps;
+    ofImage cupBack;
+    ofImage cupFront;
+    
+    ofImage panelLapsBack;
+    ofImage panelLapsFront;
     
     ofSoundPlayer motorSound[4];
     ofSoundPlayer cheer;
