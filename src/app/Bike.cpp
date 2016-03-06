@@ -83,7 +83,7 @@ void Bike::update(){
     float _acceleration;
     float _maxSpeed;
     float _rotationStep;
-        
+    
     if(powerbar.isActive()){
         // power up values
         _acceleration = powerbar.acceleration;

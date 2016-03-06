@@ -58,6 +58,9 @@ public:
     ofImage cup;
     
     ofImage panelLaps;
+    
+    ofSoundPlayer motorSound[4];
+    ofSoundPlayer cheer;
 };
 
 #endif
