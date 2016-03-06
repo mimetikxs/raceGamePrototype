@@ -35,6 +35,16 @@ void Assets::loadAssets(){
     loadImage(&cup, "images/cup.png");
     
     loadImage(&panelLaps, "images/laps.png");
+    
+    for(int i = 0; i < 4; i++){
+        motorSound[i].load("motorcycle.wav");
+        motorSound[i].setMultiPlay(true);
+        motorSound[i].setLoop(true);
+        motorSound[i].setPosition(ofRandom(1));
+    }
+    
+    cheer.load("cheer_short.wav");
+    cheer.setMultiPlay(true);
 }
 
 

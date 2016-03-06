@@ -76,6 +76,10 @@ void runningState::keypressed(int key){
         case ' ':
             next();
             break;
+            
+        case 'c':
+            Assets::getInstance()->cheer.play();
+            break;
         case 13:
             next();
             break;

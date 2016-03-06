@@ -97,6 +97,11 @@ void Race::start() {
     rankLastTime = ofGetElapsedTimef();
     
     powerupsManager.reset();
+    
+//    TODO add logic to sound
+    for(int i = 0; i < 4; i ++){
+        assets->motorSound[i].play();
+    }
 }
 
 
@@ -239,7 +244,8 @@ void Race::updatePlayers(){
         float currentDistance = finishingLine.getDistance(bike->getFrontPos());
         if(prevDistance < 0  && currentDistance >= 0){
             player->completedLaps += 1;
-            
+            assets->cheer.play();
+
             updateRanking();
         }
         
