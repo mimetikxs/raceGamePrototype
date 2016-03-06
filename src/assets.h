@@ -17,6 +17,7 @@ public:
     void loadAssets();
     
     int getNumLaps();
+    bool useBikeCollisions();
     
     string getPlayerName(int i);
     ofColor getPlayerColor(int i);

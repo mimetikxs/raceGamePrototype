@@ -7,6 +7,7 @@
 //
 
 #include "Bike.h"
+#include "assets.h"
 
 #define TO_RADIANS PI/180.f
 #define TO_DEGREES 180.f/PI
@@ -172,6 +173,9 @@ float Bike::getTimeStuck(){
 
 
 void Bike::doBikeCollision(Bike* other){
+    if (!Assets::getInstance()->useBikeCollisions())
+        return;
+    
     for(int i = 0; i < collisionCircles.size(); i++){
         CollisionPoint& circleA = collisionCircles[i];
         ofVec2f posA = localToGlobal(circleA.position);
