@@ -5,6 +5,7 @@
 #include "Race.h"
 #include "CountDown.h"
 #include "PanelPower.h"
+#include "PanelRanking.h"
 
 
 class App: public BaseApp
@@ -15,6 +16,7 @@ public:
     // panels
     CountDown countDown;
     PanelPower panelPower;
+    PanelRanking panelRanking;
     
     App();
     ~App(){};
