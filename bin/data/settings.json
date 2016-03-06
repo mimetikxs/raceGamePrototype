@@ -6,9 +6,25 @@
   "height" :1080,
   "scale" : 0.7,
   "num_laps" : 5,
-  "player_0" : "Piloto 1",
-  "player_1" : "Piloto 2",
-  "player_2" : "Pedrosa",
-  "player_3" : "Marquez",
+  "player_0" : {
+    "name" : "Piloto 1",
+    "position" : 3,
+    "color" : "orange_repsol"
+  },
+  "player_1" : {
+      "name" : "Piloto 2",
+      "position" : 2,
+      "color" : "blue_repsol"
+  },
+  "player_2" : {
+      "name" : "Pedrosa",
+      "position" : 1,
+      "color" : "magenta"
+  },
+  "player_3" : {
+      "name" : "Marquez",
+      "position" : 0,
+      "color" : "green"
+  },
   "collisions": false
  }

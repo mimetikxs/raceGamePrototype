@@ -1,12 +1,17 @@
 #include "baseAssets.h"
 
 BaseAssets::BaseAssets(){
-    string path = ofToDataPath("settings.json");
-    ofLogNotice() << "Loading settings from: " << path;
-    settings.open(path);
+    loadSettings();
     default_font = "GT-Pressura-Mono.otf";
     ofTrueTypeFont::setGlobalDpi(72);
     clearFonts();
+}
+
+void BaseAssets::loadSettings(){
+    string path = ofToDataPath("settings.json");
+    ofLogNotice() << "Loading settings from: " << path;
+    settings.open(path);
+    
 }
 
 void BaseAssets::clearFonts(){

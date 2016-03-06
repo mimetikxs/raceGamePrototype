@@ -49,7 +49,11 @@ void Assets::loadAssets(){
 
 
 string Assets::getPlayerName(int i){
-    return getData("player_" + ofToString(i)).asString();
+    return getData("player_" + ofToString(i))["name"].asString();
+}
+
+int Assets::getPlayerPosition(int i){
+    return getData("player_" + ofToString(i))["position"].asInt();
 }
 
 

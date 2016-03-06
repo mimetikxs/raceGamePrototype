@@ -65,8 +65,8 @@ void Race::setup(){
         string name = assets->getPlayerName(i);
         ofColor color = assets->getPlayerColor(i);
         Bike* bike = bikes[i];                      // TODO: get bike index from json (bikes[0] and bikes[0] are repsol branded)
-        ofImage* helmet = &assets->getHelmet(i);    // index of helmet and bike must be the same
-        int ranking = i;
+        ofImage* helmet = &assets->getHelmet(i);
+        int ranking = assets->getPlayerPosition(i);
         
         if(name != ""){
             players.push_back(new Player(name, bike, helmet, color, ranking));
