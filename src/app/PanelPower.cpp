@@ -40,11 +40,6 @@ void PanelPower::setup(vector<Player*>* _players){
 }
 
 
-void PanelPower::update(){
-    
-}
-
-
 void PanelPower::draw(){
     // draw background
     ofEnableBlendMode(OF_BLENDMODE_MULTIPLY);
@@ -77,18 +72,15 @@ void PanelPower::drawPowerBar(int index){
     mask.setVertex(1, ofVec3f(top, 0, 0));
     mask.setVertex(2, ofVec3f(bottom, 22, 0));
     
-    
     ofPushMatrix();
-    ofTranslate(pos.x, pos.y);
-    
-    assets->powerBar.draw(0,0);
+        ofTranslate(pos.x, pos.y);
+        
+        assets->powerBar.draw(0,0);
 
-    ofPushStyle();
-    ofSetColor(0);
-        mask.draw();
-    ofPopStyle();
-    
+        ofPushStyle();
+        ofSetColor(0);
+            mask.draw();
+        ofPopStyle();
     ofPopMatrix();
-    
 }
 

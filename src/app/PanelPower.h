@@ -20,7 +20,6 @@ public:
     PanelPower();
     
     void setup(vector<Player*>* players);
-    void update();
     void draw();
     
     vector<Player*> * players;
@@ -40,8 +39,6 @@ private:
     void drawPowerBar(int index);
     
     Assets* assets;
-    
-    
     
 //    void keyPressed(ofKeyEventArgs& eventArgs){
 //        int key = eventArgs.key;
