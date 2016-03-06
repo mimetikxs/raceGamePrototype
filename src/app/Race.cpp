@@ -190,12 +190,14 @@ void Race::updateBikes(){
     }
     
     // check collisions
-    for(int i = 0; i < bikes.size(); i++){
-        Bike* bike1 = bikes[i];
-        for(int j = i + 1; j < bikes.size(); j++){
-            Bike* bike2 = bikes[j];
-            
-            bike1->doBikeCollision(bike2);
+    
+    if (assets->useBikeCollisions()){
+        for(int i = 0; i < bikes.size(); i++){
+            Bike* bike1 = bikes[i];
+            for(int j = i + 1; j < bikes.size(); j++){
+                Bike* bike2 = bikes[j];
+                bike1->doBikeCollision(bike2);
+            }
         }
     }
 }

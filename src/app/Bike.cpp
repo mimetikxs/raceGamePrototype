@@ -7,7 +7,6 @@
 //
 
 #include "Bike.h"
-#include "assets.h"
 
 #define TO_RADIANS PI/180.f
 #define TO_DEGREES 180.f/PI
@@ -84,7 +83,7 @@ void Bike::update(){
     float _acceleration;
     float _maxSpeed;
     float _rotationStep;
-    
+        
     if(powerbar.isActive()){
         // power up values
         _acceleration = powerbar.acceleration;
@@ -97,7 +96,11 @@ void Bike::update(){
         _rotationStep = rotationStep;
     }
     
-    speed += (speed < _maxSpeed) ? _acceleration : 0;
+    
+    
+    if(bAccelerate || powerbar.isActive()){
+        speed += (speed < _maxSpeed) ? _acceleration : 0;
+    }
     
     if(bTurnRight){
         float newRotation = rotation - _rotationStep;
@@ -109,9 +112,9 @@ void Bike::update(){
         setRotation(newRotation);
     }
     
-    //if(bPullover){
+    if(bPullover || speed > maxSpeed){
         speed *= (speed < 0.003f) ? 0.0f : friction;
-    //}
+    }
     
     direction.x = sin(rotation);
     direction.y = cos(rotation);
@@ -173,8 +176,6 @@ float Bike::getTimeStuck(){
 
 
 void Bike::doBikeCollision(Bike* other){
-    if (!Assets::getInstance()->useBikeCollisions())
-        return;
     
     for(int i = 0; i < collisionCircles.size(); i++){
         CollisionPoint& circleA = collisionCircles[i];
