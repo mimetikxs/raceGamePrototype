@@ -25,6 +25,7 @@ public:
     ,rankPos(_rankPos)
     ,completedLaps(0)
     ,lapPercent(0.0)
+    ,lastLapTimeString("00:00:00")
     {}
     
     // attributes
@@ -33,9 +34,11 @@ public:
     
     // race data
     int startingIndex;     // player will start the race in this postion
-    int rankPos;              // ranking of this player in the race (0 based)
+    int rankPos;           // ranking of this player in the race (0 based)
     int completedLaps;     // number of completed laps
     float lapPercent;
+    
+    string lastLapTimeString;
     
     Bike* bike;
     

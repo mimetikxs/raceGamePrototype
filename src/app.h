@@ -6,6 +6,7 @@
 #include "CountDown.h"
 #include "PanelPower.h"
 #include "PanelRanking.h"
+#include "TimesPanel.h"
 
 
 class App: public BaseApp
@@ -17,6 +18,7 @@ public:
     CountDown countDown;
     PanelPower panelPower;
     PanelRanking panelRanking;
+    TimesPanel panelTime;
     
     App();
     ~App(){};
