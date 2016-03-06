@@ -64,6 +64,13 @@ string Assets::getPlayerAttributes(int i){
     return getData("player_" + ofToString(i))["color"].asString();
 }
 
+int Assets::getNumLaps(){
+    return getData("num_laps").asInt();
+}
+
+bool Assets::useBikeCollisions(){
+    return getData("collisions").asBool();
+}
 
 vector<ofImage*> Assets::getRandomPowerupImage(){
     int i = ofRandom(4);
@@ -95,13 +102,4 @@ vector<ofImage*> Assets::getRandomPowerupImage(){
             return img;
             break;
     }
-}
-
-
-int Assets::getNumLaps(){
-    return getData("num_laps").asInt();
-}
-
-bool Assets::useBikeCollisions(){
-    return getData("collisions").asBool();
 }
