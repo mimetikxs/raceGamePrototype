@@ -33,6 +33,8 @@ public:
     string default_font;
     Json::Value getData(string key);
     
+    void loadSettings();
+    
 private:
     vector<ofVideoPlayer*> videos;
     

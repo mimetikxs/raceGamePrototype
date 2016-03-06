@@ -66,7 +66,7 @@ void Race::setup(){
         string name = assets->getPlayerName(i);
         ofColor color = assets->getPlayerColor(i);
         ofImage* helmet = &assets->getHelmet(i);
-        int ranking = i;
+        int ranking = assets->getPlayerPosition(i);
         
         if(name != ""){
             players.push_back(new Player(name, bikes[i], helmet, color, ranking));

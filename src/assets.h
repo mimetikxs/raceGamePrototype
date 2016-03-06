@@ -21,6 +21,7 @@ public:
     
     string getPlayerName(int i);
     ofColor getPlayerColor(int i);
+    int getPlayerPosition(int i);
     
     ofImage backgroundImg;
     ofImage collisionMap;

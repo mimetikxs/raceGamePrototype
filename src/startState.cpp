@@ -16,6 +16,7 @@ startState::~startState(){};
 
 startState::startState(App *a):BaseState(a){
     BaseState::initialize();
+    Assets::getInstance()->loadSettings();
     
     app->race.setup();
 };
