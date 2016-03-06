@@ -15,6 +15,7 @@ runningState::runningState(App *a):BaseState(a){
 
 void runningState::update(){
     app->race.update();
+    app->panelPower.update();
     if(app->race.isFinised()){
         next();
     }
@@ -29,6 +30,7 @@ void runningState::next(){
 
 void runningState::draw(){
     app->race.draw();
+    app->panelPower.draw();
     app->race.drawInfo();
 };
 

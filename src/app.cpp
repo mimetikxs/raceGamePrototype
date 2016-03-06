@@ -2,6 +2,6 @@
 
 
 App::App():BaseApp(){
-    
+    panelPower.setup(&race.players);
 }
 

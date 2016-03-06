@@ -25,8 +25,9 @@ void Assets::loadAssets(){
     loadImage(&powerupGlow3, "images/powerups/powerup3-glow.png");
     loadImage(&powerupGlow4, "images/powerups/powerup4-glow.png");
     
-    loadImage(&panelPower, "images/panel-power/panelPower.png");
-    loadImage(&panelPower, "images/panel-power/powerBar.png");
+    loadImage(&panelPower0, "images/panel-power/panelPower0.png");
+    loadImage(&panelPower1, "images/panel-power/panelPower1.png");
+    loadImage(&powerBar, "images/panel-power/powerBar.png");
     
     loadImage(&panelRanking, "images/panel-ranking.png");
     

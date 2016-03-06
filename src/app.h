@@ -4,13 +4,17 @@
 #include "baseApp.h"
 #include "Race.h"
 #include "CountDown.h"
+#include "PanelPower.h"
+
 
 class App: public BaseApp
 {
 public:
     
-    Race race;
+    Race race;    
+    // panels
     CountDown countDown;
+    PanelPower panelPower;
     
     App();
     ~App(){};

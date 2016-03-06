@@ -4,7 +4,7 @@
   "remote_port" : 8080,
   "width" : 1920,
   "height" :1080,
-  "scale" : 0.5,
+  "scale" : 0.7,
   "num_laps" : 5,
   "player_0" : "Piloto 1",
   "player_1" : "Piloto 2",

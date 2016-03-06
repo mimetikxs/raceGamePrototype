@@ -12,7 +12,6 @@
 
 Race::Race()
 : finishingLine(1333, 79, 1333, 286)
-, panelPower(players)
 {
     assets = Assets::getInstance();
     
@@ -36,7 +35,6 @@ Race::Race()
     ofAddListener(parametersDriving.parameterChangedE(), this, &Race::onParameterChange);
     ofAddListener(parametersCollision.parameterChangedE(), this, &Race::onParameterChange);
     ofAddListener(parametersPowerups.parameterChangedE(), this, &Race::onParameterChange);
-
     
     // init starting marks
     // TODO: load from json
@@ -45,6 +43,7 @@ Race::Race()
     startingMarks.push_back(StartingMark(1105, 148, PI/2));
     startingMarks.push_back(StartingMark(1054, 211, PI/2));
     
+    // init bikes
     bikes.push_back(new Bike(&assets->bike1, &assets->bikeGlow));
     bikes.push_back(new Bike(&assets->bike2, &assets->bikeGlow));
     bikes.push_back(new Bike(&assets->bike3, &assets->bikeGlow));
@@ -110,6 +109,7 @@ void Race::update(){
         if(!bFinished){
             powerupsManager.update(bikes);
             updateTimer();
+            
             if(ofGetElapsedTimef()-rankLastTime > 1){
                 updateRanking(); // update once every second
                 rankLastTime = ofGetElapsedTimef();
