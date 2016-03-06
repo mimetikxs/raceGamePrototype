@@ -9,5 +9,6 @@
   "player_0" : "Piloto 1",
   "player_1" : "Piloto 2",
   "player_2" : "Pedrosa",
-  "player_3" : "Marquez"
+  "player_3" : "Marquez",
+  "collisions": false
  }

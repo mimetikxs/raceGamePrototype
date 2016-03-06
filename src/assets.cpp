@@ -121,3 +121,7 @@ vector<ofImage*> Assets::getRandomPowerupImage(){
 int Assets::getNumLaps(){
     return getData("num_laps").asInt();
 }
+
+bool Assets::useBikeCollisions(){
+    return getData("collisions").asBool();
+}

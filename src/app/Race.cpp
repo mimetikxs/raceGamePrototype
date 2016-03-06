@@ -20,7 +20,7 @@ Race::Race()
     parametersDriving.add( friction.set("friction", 0.85, 0.5, 0.999) );
     parametersDriving.add( maxSpeed.set("max speed", 2.0, 1.0, 50.0) );
     parametersDriving.add( rotationStep.set("rotation step", 0.17, 0.0001, 1.0) );
-    parametersDriving.add( scale.set("scale", 40, 1, 100) );
+    parametersDriving.add( scale.set("scale", 40, 1, 200) );
     parametersCollision.add( frontFriction.set("front friction", 0.33, 0.99, 0.1) );
     parametersCollision.add( sidesFriction.set("sides friction", 0.85, 0.99, 0.1) );
     parametersCollision.add( sidesRotation.set("sides rotation", 0.01, 0.001, 0.05) );
@@ -190,12 +190,14 @@ void Race::updateBikes(){
     }
     
     // check collisions
-    for(int i = 0; i < bikes.size(); i++){
-        Bike* bike1 = bikes[i];
-        for(int j = i + 1; j < bikes.size(); j++){
-            Bike* bike2 = bikes[j];
-            
-            bike1->doBikeCollision(bike2);
+    
+    if (assets->useBikeCollisions()){
+        for(int i = 0; i < bikes.size(); i++){
+            Bike* bike1 = bikes[i];
+            for(int j = i + 1; j < bikes.size(); j++){
+                Bike* bike2 = bikes[j];
+                bike1->doBikeCollision(bike2);
+            }
         }
     }
 }
