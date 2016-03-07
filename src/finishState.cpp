@@ -49,7 +49,7 @@ void finishState::update(){
 
 void finishState::next(){
     Assets::getInstance()->fanfare.stop();
-    app->setCurrentState(new startState(app));
+    app->setCurrentState(new standbyState(app));
     delete this;
 };
 

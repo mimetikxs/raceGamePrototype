@@ -56,6 +56,9 @@ void startState::draw(){
 
 void startState::cancel(){
     app->countDown.stop();
+    Assets::getInstance()->countdownSound.stop();
+    Assets::getInstance()->go.stop();
+    Assets::getInstance()->cheer.stop();
     app->setCurrentState(new standbyState(app));
     delete this;
 };
