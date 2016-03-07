@@ -11,9 +11,7 @@
 
 // sorting function
 bool sortByRankPos(Player* a , Player* b){
-    float completedA = a->completedLaps + a->lapPercent;
-    float completedB = b->completedLaps + b->lapPercent;
-    if (completedA > completedB){
+    if (a->rankPos < b->rankPos){
         return true;
     } else {
         return false;

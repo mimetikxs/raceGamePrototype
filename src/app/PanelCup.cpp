@@ -11,7 +11,6 @@
 
 PanelCup::PanelCup(){
     assets = Assets::getInstance();
-    ofAddListener(ofEvents().keyPressed, this, &PanelCup::keyPressed);
 }
 
 

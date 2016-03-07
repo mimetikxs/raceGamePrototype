@@ -97,6 +97,8 @@ void Race::setup(){
             
             int ranking = assets->getPlayerPosition(i);
             
+            cout << name << " - " << ranking << endl;
+            
             Bike* bike = getBike(bikeImage);
             bikes.push_back(bike);
             players.push_back(new Player(name, bike, helmetImage, textColor, trailColor, ranking));
@@ -169,10 +171,27 @@ void Race::draw() {
     }
     else{
         assets->backgroundImg.draw(0,0);
+        
         powerupsManager.draw();
         for(auto & player : players){
             player->bike->draw(player->trailColor);
         }
+        
+        // draw laps
+        ofEnableBlendMode(OF_BLENDMODE_MULTIPLY);
+        
+        ofPushStyle();
+        ofSetColor(255,200);
+        assets->panelLapsBack.draw(26, 100);
+        ofPopStyle();
+        
+        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+        
+        assets->panelLapsFront.draw(26, 100);
+        
+        string lapsString = "LAP " + ofToString(numLaps) + "/" + ofToString(assets->getNumLaps());
+        assets->presura25.drawString(lapsString, 98, 136);
+        ofDisableBlendMode();
     }
 }
 

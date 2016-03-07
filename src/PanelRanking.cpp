@@ -37,7 +37,11 @@ void PanelRanking::setup(vector<Player *> * _players){
 void PanelRanking::draw(){
     // draw background
     ofEnableBlendMode(OF_BLENDMODE_MULTIPLY);
+    
+    ofPushStyle();
+    ofSetColor(255,200);
     assets->panelRankingBack.draw(position);
+    ofPopStyle();
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     

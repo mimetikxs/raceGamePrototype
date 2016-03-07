@@ -19,6 +19,7 @@ startState::startState(App *a):BaseState(a){
     Assets::getInstance()->loadSettings();
     
     app->race.setup();
+    app->countDown.start();
 };
 
 
@@ -38,9 +39,10 @@ void startState::next(){
 
 void startState::draw(){
     app->race.draw();
-    
-    // TODO: show count down video
-    ofDrawBitmapStringHighlight("3, 2, 1... GO!", ofGetWidth()/2, ofGetHeight()/2);
+    app->panelTime.draw();
+    app->countDown.draw();
+    app->panelRanking.draw();
+    //ofDrawBitmapStringHighlight("3, 2, 1... GO!", ofGetWidth()/2, ofGetHeight()/2);
 };
 
 

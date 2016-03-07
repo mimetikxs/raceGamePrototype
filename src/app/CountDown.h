@@ -7,6 +7,8 @@
 //
 
 #pragma once
+#include "ofMain.h"
+#include "assets.h"
 
 class CountDown {
 
@@ -18,4 +20,6 @@ public:
     
     void update();
     void draw();
+    
+    Assets* assets;
 };
