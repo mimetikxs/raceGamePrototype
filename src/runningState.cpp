@@ -26,6 +26,11 @@ void runningState::next(){
     delete this;
 };
 
+void runningState::cancel(){
+    app->setCurrentState(new standbyState(app));
+    delete this;
+};
+
 
 void runningState::draw(){
     app->race.draw();
@@ -77,11 +82,12 @@ void runningState::keypressed(int key){
             next();
             break;
             
-        case 'c':
-            Assets::getInstance()->cheer.play();
-            break;
         case 13:
             next();
+            break;
+            
+        case 'q':
+            cancel();
             break;
         default:
             break;
