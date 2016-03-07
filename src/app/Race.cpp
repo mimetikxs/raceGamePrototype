@@ -169,7 +169,7 @@ void Race::draw() {
     else{
         ofTranslate(-22, 33);
         
-        ofScale(1.01, 1.004);
+        ofScale(1.009, 1.004);
         
         assets->backgroundImg.draw(0,0);
         powerupsManager.draw();

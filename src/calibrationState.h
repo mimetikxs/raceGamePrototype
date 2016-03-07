@@ -9,6 +9,7 @@ class calibrationState: public BaseState
 {
 public:
     int x, y;
+    int px, py;
     float sx, sy;
     calibrationState(App *a);
     ~calibrationState();

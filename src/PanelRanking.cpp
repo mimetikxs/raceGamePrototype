@@ -29,7 +29,7 @@ PanelRanking::PanelRanking(){
 
 void PanelRanking::setup(vector<Player *> * _players){
     players = _players;
-    position.set(1622, 657);
+    position.set(1625, 647);
 }
 
 
