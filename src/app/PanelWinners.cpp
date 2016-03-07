@@ -76,7 +76,7 @@ void PanelWinners::drawPlayer(int index){
     float y = p.y;
     
     ofSetColor(color);
-    presura52.drawString(ofToString(ranking+1), x, y);
+    presura52.drawString(ofToString(ranking+1), x, y + 8);
     
     ofSetColor(255);
     

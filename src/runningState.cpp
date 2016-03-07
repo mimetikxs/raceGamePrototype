@@ -10,6 +10,12 @@ runningState::runningState(App *a):BaseState(a){
     BaseState::initialize();
     
     app->race.start();
+    
+    
+    for(int i = 0; i < 4; i++){
+        Assets::getInstance()->motorSound[i].play();
+        Assets::getInstance()->motorSound[i].setVolume(0.7);
+    }
 };
 
 

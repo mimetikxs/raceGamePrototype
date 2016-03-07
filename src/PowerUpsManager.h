@@ -13,7 +13,7 @@
 #include "assets.h"
 
 
-#define POWER_SECONDS 5.f           // seconds that powerups add to the power bar
+#define POWER_SECONDS 1.5           // seconds that powerups add to the power bar
 #define SHOW_INTERVAL 5.f           // interval to show a new power up
 #define MAX_POWERUPS 5              // max number of powerups on screen
 #define SAFE_DIST_SQUARED 170*170   // powerup won't show if it a bike is closer than this
@@ -54,7 +54,7 @@ public:
         powerups.push_back( new PowerUp(1107, 641, 20) );
         
         parameters.setName("powerups manager");
-        parameters.add( powerSeconds.set("added seconds", POWER_SECONDS, 1, 10));
+        powerSeconds = 1.66;
         parameters.add( interval.set("show interval", SHOW_INTERVAL, 1, 15));
         parameters.add( maxNumPowerups.set("max powerups", MAX_POWERUPS, 1, 10));
         

@@ -43,14 +43,13 @@ void Assets::loadAssets(){
     
     for(int i = 0; i < 4; i++){
         motorSound[i].load("motorcycle.wav");
-        //motorSound[i].setMultiPlay(true);
         motorSound[i].setLoop(true);
         motorSound[i].setPosition(ofRandom(1));
         //motorSound[i].setVolume(0.8);
     }
     
     cheer.load("cheer_short.wav");
-    cheer.setVolume(0.7);
+    cheer.setVolume(0.4);
     cheer.setMultiPlay(true);
     
     countdownSound.load("countdown.mp3");

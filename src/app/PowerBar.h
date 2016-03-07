@@ -10,7 +10,7 @@
 
 #include "ofMain.h"
 
-#define TOTAL_DURATION 10
+#define TOTAL_DURATION 5
 
 
 class PowerBar {
@@ -50,7 +50,7 @@ public:
             elapsedTime += ofGetElapsedTimef() - lastElapsedTime;
             lastElapsedTime = ofGetElapsedTimef();
             
-            percent = 1 - (elapsedTime / totalDuration) * 2;
+            percent = 1 - (elapsedTime / totalDuration);
             
             if(percent <= 0){
                 deactivate();
