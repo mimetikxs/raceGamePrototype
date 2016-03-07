@@ -50,10 +50,15 @@ void Assets::loadAssets(){
     }
     
     cheer.load("cheer_short.wav");
+    cheer.setVolume(0.7);
     cheer.setMultiPlay(true);
     
     countdownSound.load("countdown.mp3");
     countdownSound.setVolume(0.1);
+    fanfare.load("fanfare.wav");
+    fanfare.setVolume(0.5);
+    go.load("go.wav");
+    
     
     presura25.load("GT-Pressura-Mono.otf", 25, true, true);
     

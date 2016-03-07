@@ -18,6 +18,8 @@ finishState::~finishState(){};
 finishState::finishState(App *a):BaseState(a){
     BaseState::initialize();
     
+    Assets::getInstance()->fanfare.play();
+    Assets::getInstance()->cheer.play();
     // disable bike controls
     for(auto bike : app->race.bikes){
         bike->bAccelerate = false;
@@ -46,6 +48,7 @@ void finishState::update(){
 
 
 void finishState::next(){
+    Assets::getInstance()->fanfare.stop();
     app->setCurrentState(new startState(app));
     delete this;
 };

@@ -68,11 +68,12 @@ public:
     ofSoundPlayer motorSound[4];
     ofSoundPlayer cheer;
     ofSoundPlayer countdownSound;
+    ofSoundPlayer fanfare;
+    ofSoundPlayer go;
     
     ofTrueTypeFont presura25;
     
     ofVideoPlayer countdown;
-    
     ofVideoPlayer standby;
 };
 

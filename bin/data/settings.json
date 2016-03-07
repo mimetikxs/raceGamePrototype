@@ -7,22 +7,22 @@
   "scale" : 1,
   "num_laps" : 5,
   "player_0" : {
-    "name" : "Pedrosa",
+    "name" : "Player 1",
     "position" : 0,
     "color" : "orange_repsol"
   },
   "player_1" : {
-      "name" : "Marquez",
+      "name" : "",
       "position" : 1,
       "color" : "blue_repsol"
   },
   "player_2" : {
-      "name" : "Antonio",
+      "name" : "",
       "position" : 3,
       "color" : "magenta"
   },
   "player_3" : {
-      "name" : "Miguel",
+      "name" : "",
       "position" : 2,
       "color" : "green"
   },
