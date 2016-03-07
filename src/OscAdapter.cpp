@@ -46,7 +46,7 @@ void OscAdapter::processOscMessage(ofxOscMessage msg){
         
         app->current_state->processRemoteCommand(player, up, down, left, right, turbo);
     
-        cout << player << up << down << left << right << turbo << endl;
+//        cout << player << up << down << left << right << turbo << endl;
         
         active[player] = true;
         

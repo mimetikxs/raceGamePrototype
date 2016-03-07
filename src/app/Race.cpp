@@ -97,7 +97,7 @@ void Race::setup(){
             
             int ranking = assets->getPlayerPosition(i);
             
-            cout << assets->motorSound[i].getVolume() << endl;
+//            cout << assets->motorSound[i].getVolume() << endl;
             
             Bike* bike = getBike(bikeImage, &assets->motorSound[i], trailColor);
             bikes.push_back(bike);
@@ -167,8 +167,8 @@ void Race::draw() {
         finishingLine.draw();
     }
     else{
-        ofTranslate(-22, 33);
         
+        ofTranslate(-22, 33);
         ofScale(1.009, 1.004);
         
         assets->backgroundImg.draw(0,0);

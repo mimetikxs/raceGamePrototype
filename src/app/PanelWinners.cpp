@@ -28,7 +28,7 @@ PanelWinners::PanelWinners(){
 
 void PanelWinners::setup(vector<Player *> * _players){
     players = _players;
-    position.set(1625, 647);
+    position.set(1625, 607);
 }
 
 
@@ -41,7 +41,7 @@ void PanelWinners::draw(){
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    assets->panelWinnersFront.draw(position.x+2, position.y-19);
+    assets->panelWinnersFront.draw(position.x+2, position.y-12);
     
     
     // draw players

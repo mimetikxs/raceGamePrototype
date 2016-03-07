@@ -31,6 +31,7 @@ void PanelCup::draw(){
     assets->cupFront.draw(position);
     
     ofDisableBlendMode();
+    ofPopMatrix();
 }
 
 void PanelCup::drawDebug(){
