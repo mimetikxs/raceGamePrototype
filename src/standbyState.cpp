@@ -6,6 +6,9 @@ standbyState::standbyState(App *a):BaseState(a){
     Assets::getInstance()->standby.play();
     Assets::getInstance()->standby.setLoopState(OF_LOOP_NORMAL);
     
+    for(int i = 0; i < 4; i++){
+        Assets::getInstance()->motorSound[i].stop();
+    }
 };
 
 standbyState::~standbyState(){

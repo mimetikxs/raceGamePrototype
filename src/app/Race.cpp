@@ -64,8 +64,8 @@ Race::Race()
     green.textColor = ofColor(46,211,0);
     green.trailColor = ofColor(0,204,80);
     
-    playerAttributes["orange_repsol"] = orangeRepsol;
-    playerAttributes["blue_repsol"] = blueRepsol;
+    playerAttributes["orange"] = orangeRepsol;
+    playerAttributes["blue"] = blueRepsol;
     playerAttributes["magenta"] = magenta;
     playerAttributes["green"] = green;
 }
