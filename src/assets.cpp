@@ -58,6 +58,9 @@ void Assets::loadAssets(){
     presura25.load("GT-Pressura-Mono.otf", 25, true, true);
     
     countdown.load("countdown-no-alpha.mp4");
+    
+    loadVideo(&countdown, "countdown-no-alpha.mp4");
+    loadVideo(&standby, "standby.mov");
 }
 
 

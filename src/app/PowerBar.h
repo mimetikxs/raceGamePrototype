@@ -50,7 +50,7 @@ public:
             elapsedTime += ofGetElapsedTimef() - lastElapsedTime;
             lastElapsedTime = ofGetElapsedTimef();
             
-            percent = 1 - (elapsedTime / totalDuration);
+            percent = 1 - (elapsedTime / totalDuration) * 2;
             
             if(percent <= 0){
                 deactivate();

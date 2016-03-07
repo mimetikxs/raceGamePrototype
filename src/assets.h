@@ -72,6 +72,8 @@ public:
     ofTrueTypeFont presura25;
     
     ofVideoPlayer countdown;
+    
+    ofVideoPlayer standby;
 };
 
 #endif
