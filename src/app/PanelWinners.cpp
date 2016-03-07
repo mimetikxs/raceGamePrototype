@@ -23,8 +23,6 @@ PanelWinners::PanelWinners(){
     numberPositions.push_back(ofVec2f(41,127));
     numberPositions.push_back(ofVec2f(41,254));
     numberPositions.push_back(ofVec2f(41,372));
-    
-//    ofAddListener(ofEvents().keyPressed, this, &PanelWinners::keyPressed);
 }
 
 

@@ -6,5 +6,6 @@ App::App():BaseApp(){
     panelRanking.setup(&race.players);
     panelTime.setup(&race.players);
     panelWinners.setup(&race.players);
+    panelCup.setup();
 }
 

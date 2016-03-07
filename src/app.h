@@ -8,6 +8,7 @@
 #include "PanelRanking.h"
 #include "TimesPanel.h"
 #include "PanelWinners.h"
+#include "PanelCup.h"
 
 
 class App: public BaseApp
@@ -21,6 +22,7 @@ public:
     PanelRanking panelRanking;
     TimesPanel panelTime;
     PanelWinners panelWinners;
+    PanelCup panelCup;
     
     App();
     ~App(){};
