@@ -67,6 +67,7 @@ public:
     
     ofSoundPlayer motorSound[4];
     ofSoundPlayer cheer;
+    ofSoundPlayer countdownSound;
     
     ofTrueTypeFont presura25;
     

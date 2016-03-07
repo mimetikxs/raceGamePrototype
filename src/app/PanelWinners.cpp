@@ -41,7 +41,7 @@ void PanelWinners::draw(){
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    assets->panelWinnersFront.draw(position.x+2, position.y+1);
+    assets->panelWinnersFront.draw(position.x+2, position.y-19);
     
     // draw players
     ofPushMatrix();
