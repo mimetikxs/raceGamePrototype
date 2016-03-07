@@ -24,11 +24,24 @@ finishState::finishState(App *a):BaseState(a){
         bike->bTurnLeft = false;
         bike->bTurnRight = false;
         bike->bUsingPowerUp = false;
+        bike->bPullover = true;
     }
 };
 
 
 void finishState::update(){
+    //fadeout sound
+    for(auto bike : app->race.bikes){
+        float currentVol = bike->motorSound->getVolume();
+        float newVol = currentVol - 0.005;
+        
+        if(newVol > 0){
+            bike->motorSound->setVolume(newVol);
+        }else{
+            bike->motorSound->setVolume(0);
+            bike->motorSound->setPaused(true);
+        }
+    }
 };
 
 

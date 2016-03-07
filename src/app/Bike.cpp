@@ -12,9 +12,15 @@
 #define TO_DEGREES 180.f/PI
 
 
-Bike::Bike(ofImage* img, ofImage* _glow){
+Bike::~Bike(){
+    motorSound->setPaused(true);
+}
+
+
+Bike::Bike(ofImage* img, ofImage* _glow, ofSoundPlayer* sound){
     image = img;
     glow = _glow;
+    motorSound = sound;
     
     acceleration = 0.4;
     friction = 0.85;
@@ -71,11 +77,17 @@ void Bike::reset(ofVec2f pos, float rot){
     bAccelerate = false;
     bTurnLeft = false;
     bTurnRight = false;
+    bPullover = false;
     
     stuckTimer = 0;
     stuckPrevTimer = 0;
     
     powerbar.reset();
+    
+    motorSound->setSpeed(0.5);
+    motorSound->setVolume(0.2);
+    motorSound->setPaused(false);
+    if(!motorSound->isPlaying()) motorSound->play();
 }
 
 
@@ -115,6 +127,9 @@ void Bike::update(){
     if(bPullover || speed > maxSpeed){
         speed *= (speed < 0.003f) ? 0.0f : friction;
     }
+    
+    motorSound->setSpeed(ofMap(speed/maxSpeed, 0, 1, 0.5, 1.0));
+    motorSound->setVolume(ofMap(speed/maxSpeed, 0, 1, 0.2, 0.6));
     
     direction.x = sin(rotation);
     direction.y = cos(rotation);

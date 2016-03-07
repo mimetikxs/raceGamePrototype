@@ -26,7 +26,6 @@ bool CountDown::isFinished(){
 
 void CountDown::update(){
     assets->countdown.update();
-    cout << assets->countdown.isPlaying() << endl;
 }
 
 

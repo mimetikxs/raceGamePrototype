@@ -97,9 +97,9 @@ void Race::setup(){
             
             int ranking = assets->getPlayerPosition(i);
             
-            cout << name << " - " << ranking << endl;
+            cout << assets->motorSound[i].getVolume() << endl;
             
-            Bike* bike = getBike(bikeImage);
+            Bike* bike = getBike(bikeImage, &assets->motorSound[i]);
             bikes.push_back(bike);
             players.push_back(new Player(name, bike, helmetImage, textColor, trailColor, ranking));
         }
@@ -129,11 +129,6 @@ void Race::start() {
     rankLastTime = ofGetElapsedTimef();
     
     powerupsManager.reset();
-    
-//    TODO add logic to sound
-    for(int i = 0; i < 4; i ++){
-        //assets->motorSound[i].play();
-    }
 }
 
 
@@ -426,8 +421,8 @@ void Race::onParameterChange(ofAbstractParameter& param){
 }
 
 
-Bike* Race::getBike(ofImage* bikeImg){
-    Bike* bike = new Bike(bikeImg, &assets->bikeGlow);
+Bike* Race::getBike(ofImage* bikeImg, ofSoundPlayer* motorSound){
+    Bike* bike = new Bike(bikeImg, &assets->bikeGlow, motorSound);
     bike->acceleration = acceleration;
     bike->friction = friction;
     bike->maxSpeed = maxSpeed;

@@ -22,4 +22,5 @@ public:
     void next();
     void keypressed(int key);
     void keyReleased(int key);
+
 };
