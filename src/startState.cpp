@@ -35,8 +35,10 @@ void startState::update(){
 
 
 void startState::next(){
+    app->countDown.stop();
     app->setCurrentState(new runningState(app));
     Assets::getInstance()->countdownSound.stop();
+    
     delete this;
 };
 
@@ -46,14 +48,21 @@ void startState::draw(){
     app->panelTime.draw();
     app->countDown.draw();
     app->panelRanking.draw();
-    //ofDrawBitmapStringHighlight("3, 2, 1... GO!", ofGetWidth()/2, ofGetHeight()/2);
 };
 
+void startState::cancel(){
+    app->countDown.stop();
+    app->setCurrentState(new standbyState(app));
+    delete this;
+};
 
 void startState::keypressed(int key){
     switch (key) {
         case OF_KEY_RETURN:
             next(); // debug only
+            break;
+        case 'q':
+            cancel();
             break;
         default:
             break;

@@ -156,6 +156,8 @@ void Race::update(){
 
 
 void Race::draw() {
+    ofPushMatrix();
+    
     if(bDrawDebug){
         assets->collisionMap.draw(0,0);
         powerupsManager.draw();
@@ -165,12 +167,16 @@ void Race::draw() {
         finishingLine.draw();
     }
     else{
-        assets->backgroundImg.draw(0,0);
+        ofTranslate(-21, 39);
         
+        ofScale(1.01, 1.011);
+        
+        assets->backgroundImg.draw(0,0);
         powerupsManager.draw();
         for(auto & player : players){
             player->bike->draw(player->trailColor);
         }
+        
         
         // draw laps
         ofEnableBlendMode(OF_BLENDMODE_MULTIPLY);
@@ -188,6 +194,7 @@ void Race::draw() {
         assets->presura25.drawString(lapsString, 98, 136);
         ofDisableBlendMode();
     }
+    ofPopMatrix();
 }
 
 

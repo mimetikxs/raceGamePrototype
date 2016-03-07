@@ -1,5 +1,5 @@
 #include "standbyState.h"
-#include "runningState.h"
+#include "startState.h"
 
 standbyState::standbyState(App *a):BaseState(a){
     BaseState::initialize();
@@ -14,7 +14,7 @@ void standbyState::draw(){
 void standbyState::update(){};
 
 void standbyState::next(){
-    app->setCurrentState(new runningState(app));
+    app->setCurrentState(new startState(app));
     delete this;
 };
 

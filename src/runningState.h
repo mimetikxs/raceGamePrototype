@@ -14,6 +14,7 @@ public:
     void update();
     void draw();
     void next();
+    void cancel();
     void keypressed(int key);
     void keyReleased(int key);
     

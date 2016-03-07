@@ -26,6 +26,7 @@ public:
     ofImage backgroundImg;
     ofImage collisionMap;
     ofImage progressMap;
+    ofImage mask;
     
     ofImage bike1;
     ofImage bike2;

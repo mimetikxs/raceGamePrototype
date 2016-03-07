@@ -21,6 +21,7 @@ public:
     
     void setup(vector<Player*>* players);
     void draw();
+    void drawDebug();
     
     vector<Player*> * players;
     
@@ -37,4 +38,5 @@ private:
     vector<ofVec2f> positions;
     
     void drawPlayer(int i);
+    
 };

@@ -1,12 +1,13 @@
 #include "ofApp.h"
 #include "runningState.h"
 #include "startState.h"
+#include "calibrationState.h"
 
 
 void ofApp::setup(){
     
     app = new App();
-    app->setCurrentState(new startState(app));
+    app->setCurrentState(new calibrationState(app));
     osc = new OscAdapter(app);
     gui = new Gui(app);
     
@@ -25,8 +26,10 @@ void ofApp::draw(){
     ofDisableBlendMode();
     outputFbo.end();
     
-    syphon.publishTexture(&outputFbo.getTexture());
     
-    outputFbo.getTexture().draw(0,0);
+    syphon.publishTexture(&outputFbo.getTexture());
+    ofSetWindowShape(1920 / 2,  1080 / 2);
+   
+    outputFbo.getTexture().draw(0,0, 1920/2, 1080/2);
     gui->draw();
 }

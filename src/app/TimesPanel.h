@@ -22,6 +22,7 @@ public:
     
     void setup(vector<Player*>* players);
     void draw();
+    void drawDebug();
     
     vector<Player*> * players;
     
