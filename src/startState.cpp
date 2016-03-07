@@ -20,6 +20,9 @@ startState::startState(App *a):BaseState(a){
     
     app->race.setup();
     app->countDown.start();
+    
+    Assets::getInstance()->countdownSound.play();
+    
 };
 
 
@@ -33,6 +36,7 @@ void startState::update(){
 
 void startState::next(){
     app->setCurrentState(new runningState(app));
+    Assets::getInstance()->countdownSound.stop();
     delete this;
 };
 

@@ -51,6 +51,9 @@ void Assets::loadAssets(){
     cheer.load("cheer_short.wav");
     cheer.setMultiPlay(true);
     
+    countdownSound.load("countdown.mp3");
+    countdownSound.setVolume(0.1);
+    
     presura25.load("GT-Pressura-Mono.otf", 25, true, true);
     
     countdown.load("countdown-no-alpha.mp4");
