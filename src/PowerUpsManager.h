@@ -133,12 +133,12 @@ private:
         
         // activate the powerup
         if(isValid){
-            cout << "new powerup" << endl;
+            //cout << "new powerup" << endl;
             powerup->setImage(assets->getRandomPowerupImage());
             powerup->active = true;
             activeCount++;
         }else{
-            cout << "[add powerup aborted]: too close to bike" << endl;
+            //cout << "[add powerup aborted]: too close to bike" << endl;
             // NOTE:
             // At this point, we won't show a powerup on this call.
             // We need to wait 5s until showNewPowerUp() is called again...
