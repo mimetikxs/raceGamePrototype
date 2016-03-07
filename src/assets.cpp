@@ -3,7 +3,7 @@
 void Assets::loadAssets(){
     loadImage(&collisionMap, "images/map.png");
     loadImage(&progressMap, "images/progess-map.png");
-    loadImage(&backgroundImg, "images/background.png");
+    loadImage(&backgroundImg, "images/background-track-only.png");
     
     loadImage(&bike1, "images/bikes/bike1.png");
     loadImage(&bike2, "images/bikes/bike2.png");
