@@ -83,3 +83,10 @@ void PanelRanking::drawPlayer(int index){
         presura22.drawString(name, x+72, y);
     }
 }
+
+
+void PanelRanking::drawDebug(){
+    
+    ofSetColor(255);
+    ofDrawRectangle(position.x, position.y,  assets->panelRankingBack.getWidth(),  assets->panelRankingBack.getHeight());
+}

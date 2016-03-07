@@ -74,3 +74,9 @@ void TimesPanel::draw(){
     
     ofPopStyle();
 }
+
+void TimesPanel::drawDebug(){
+    ofSetColor(255);
+    
+    ofDrawRectangle(0,0, 1920, 42);
+}

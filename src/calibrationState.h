@@ -8,6 +8,8 @@
 class calibrationState: public BaseState
 {
 public:
+    int x, y;
+    float sx, sy;
     calibrationState(App *a);
     ~calibrationState();
     string toString() { return "calibration"; }

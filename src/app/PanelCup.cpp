@@ -30,3 +30,9 @@ void PanelCup::draw(){
     
     ofDisableBlendMode();
 }
+
+void PanelCup::drawDebug(){
+    
+    ofSetColor(255);
+    ofDrawRectangle(position.x, position.y,  assets->cupBack.getWidth(),  assets->cupBack.getHeight());
+}

@@ -21,6 +21,7 @@ public:
     
     void setup();
     void draw();
+    void drawDebug();
     
     ofVec2f position;
     
