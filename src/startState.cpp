@@ -20,15 +20,19 @@ startState::startState(App *a):BaseState(a){
     
     app->race.setup();
     app->countDown.start();
-    
+    Assets::getInstance()->cheer.play();
     Assets::getInstance()->countdownSound.play();
+    Assets::getInstance()->countdownSound.setMultiPlay(true);
     
 };
 
 
 void startState::update(){
     app->countDown.update();
+    Assets::getInstance()->go.play();
+    
     if (app->countDown.isFinished()) {
+        Assets::getInstance()->cheer.play();
         next();
     }
 };
@@ -52,6 +56,9 @@ void startState::draw(){
 
 void startState::cancel(){
     app->countDown.stop();
+    Assets::getInstance()->countdownSound.stop();
+    Assets::getInstance()->go.stop();
+    Assets::getInstance()->cheer.stop();
     app->setCurrentState(new standbyState(app));
     delete this;
 };

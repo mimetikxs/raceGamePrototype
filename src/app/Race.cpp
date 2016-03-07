@@ -65,8 +65,8 @@ Race::Race()
     green.textColor = ofColor(46,211,0);
     green.trailColor = ofColor(0,204,80);
     
-    playerAttributes["orange_repsol"] = orangeRepsol;
-    playerAttributes["blue_repsol"] = blueRepsol;
+    playerAttributes["orange"] = orangeRepsol;
+    playerAttributes["blue"] = blueRepsol;
     playerAttributes["magenta"] = magenta;
     playerAttributes["green"] = green;
 }
@@ -98,7 +98,7 @@ void Race::setup(){
             
             int ranking = assets->getPlayerPosition(i);
             
-            cout << assets->motorSound[i].getVolume() << endl;
+//            cout << assets->motorSound[i].getVolume() << endl;
             
             Bike* bike = getBike(bikeImage, &assets->motorSound[i], trailColor);
             bikes.push_back(bike);
@@ -169,9 +169,9 @@ void Race::draw() {
         halfwayLine.draw();
     }
     else{
-        ofTranslate(-21, 39);
         
-        ofScale(1.01, 1.011);
+        ofTranslate(-22, 33);
+        ofScale(1.009, 1.004);
         
         assets->backgroundImg.draw(0,0);
         powerupsManager.draw();

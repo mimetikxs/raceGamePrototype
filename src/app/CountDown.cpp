@@ -30,7 +30,7 @@ void CountDown::update(){
 
 
 void CountDown::draw(){
-    assets->countdown.draw(1334,754, 253,273);
+    assets->countdown.draw(1332,738, 253,273);
 }
 
 void CountDown::stop(){

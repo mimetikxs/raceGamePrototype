@@ -10,7 +10,7 @@
 
 #include "ofMain.h"
 
-#define TOTAL_DURATION 10
+#define TOTAL_DURATION 5
 
 
 class PowerBar {

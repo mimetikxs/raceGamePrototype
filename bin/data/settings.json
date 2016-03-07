@@ -7,24 +7,24 @@
   "scale" : 1,
   "num_laps" : 5,
   "player_0" : {
+    "position" : 2,
     "name" : "Pedrosa",
-    "position" : 3,
-    "color" : "orange_repsol"
+    "color" : "orange"
   },
   "player_1" : {
+      "position" : 3,
       "name" : "Marquez",
-      "position" : 2,
-      "color" : "blue_repsol"
+      "color" : "blue"
   },
   "player_2" : {
-      "name" : "Piloto 1",
-      "position" : 1,
+      "position" : 0,
+      "name" : "Jugador 1",
       "color" : "magenta"
   },
   "player_3" : {
-      "name" : "Piloto 2",
-      "position" : 0,
+      "position" : 1,
+      "name" : "Jugador 2",
       "color" : "green"
   },
-  "collisions": false
+  "collisions": true
  }

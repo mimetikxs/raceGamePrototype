@@ -34,7 +34,7 @@ PanelPower::PanelPower(){
 
 void PanelPower::setup(vector<Player*>* _players){
     players = _players;
-    position.set(1334, 744);
+    position.set(1332, 731);
 }
 
 

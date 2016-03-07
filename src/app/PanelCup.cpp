@@ -15,12 +15,14 @@ PanelCup::PanelCup(){
 
 
 void PanelCup::setup(){
-    position.set(1334, 744);
+    position.set(1332, 731);
 }
 
 
 void PanelCup::draw(){
+    ofPushMatrix();
     ofEnableBlendMode(OF_BLENDMODE_MULTIPLY);
+    
     
     assets->cupBack.draw(position);
     
@@ -29,6 +31,7 @@ void PanelCup::draw(){
     assets->cupFront.draw(position);
     
     ofDisableBlendMode();
+    ofPopMatrix();
 }
 
 void PanelCup::drawDebug(){

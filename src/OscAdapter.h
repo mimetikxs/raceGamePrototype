@@ -24,6 +24,8 @@ public:
     
     void processOscMessage(ofxOscMessage msg);
     
+    bool active[4]; 
+    
 };
 
 

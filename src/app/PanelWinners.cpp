@@ -28,7 +28,7 @@ PanelWinners::PanelWinners(){
 
 void PanelWinners::setup(vector<Player *> * _players){
     players = _players;
-    position.set(1622, 615);
+    position.set(1625, 607);
 }
 
 
@@ -41,7 +41,8 @@ void PanelWinners::draw(){
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    assets->panelWinnersFront.draw(position.x+2, position.y-19);
+    assets->panelWinnersFront.draw(position.x+2, position.y-12);
+    
     
     // draw players
     ofPushMatrix();
@@ -75,7 +76,7 @@ void PanelWinners::drawPlayer(int index){
     float y = p.y;
     
     ofSetColor(color);
-    presura52.drawString(ofToString(ranking+1), x, y);
+    presura52.drawString(ofToString(ranking+1), x, y + 8);
     
     ofSetColor(255);
     

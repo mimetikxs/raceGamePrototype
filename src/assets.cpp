@@ -43,21 +43,28 @@ void Assets::loadAssets(){
     
     for(int i = 0; i < 4; i++){
         motorSound[i].load("motorcycle.wav");
-        //motorSound[i].setMultiPlay(true);
         motorSound[i].setLoop(true);
         motorSound[i].setPosition(ofRandom(1));
         //motorSound[i].setVolume(0.8);
     }
     
     cheer.load("cheer_short.wav");
+    cheer.setVolume(0.4);
     cheer.setMultiPlay(true);
     
     countdownSound.load("countdown.mp3");
     countdownSound.setVolume(0.1);
+    fanfare.load("fanfare.wav");
+    fanfare.setVolume(0.5);
+    go.load("go.wav");
+    
     
     presura25.load("GT-Pressura-Mono.otf", 25, true, true);
     
     countdown.load("countdown-no-alpha.mp4");
+    
+    loadVideo(&countdown, "countdown-no-alpha.mp4");
+    loadVideo(&standby, "standby.mov");
 }
 
 

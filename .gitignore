@@ -6,3 +6,4 @@ racingGame.xcodeproj/*
 *.xcconfig
 Makefile
 *.plist
+bin/data/*.mov

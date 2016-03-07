@@ -6,7 +6,7 @@ Gui::Gui(App *a){
     gui.setup();
     init();
     
-    bVisible = true;
+    bVisible = false;
     load();
     ofAddListener(ofEvents().keyPressed, this, &Gui::keyPressed);
 }

@@ -10,6 +10,12 @@ runningState::runningState(App *a):BaseState(a){
     BaseState::initialize();
     
     app->race.start();
+    
+    
+    for(int i = 0; i < 4; i++){
+        Assets::getInstance()->motorSound[i].play();
+        Assets::getInstance()->motorSound[i].setVolume(0.7);
+    }
 };
 
 
@@ -42,7 +48,7 @@ void runningState::draw(){
 
 
 void runningState::keypressed(int key){
-    Bike& bike1 = *app->race.bikes[2];
+    Bike& bike1 = *app->race.bikes[0];
     Bike& bike2 = *app->race.bikes[3];
     
     switch (key) {
@@ -97,7 +103,7 @@ void runningState::keypressed(int key){
 
 
 void runningState::keyReleased(int key){
-    Bike& bike1 = *app->race.bikes[2];
+    Bike& bike1 = *app->race.bikes[0];
     Bike& bike2 = *app->race.bikes[3];
     
     switch (key) {
