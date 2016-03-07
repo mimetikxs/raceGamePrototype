@@ -37,7 +37,7 @@ void PanelRanking::setup(vector<Player *> * _players){
 void PanelRanking::draw(){
     // draw background
     ofEnableBlendMode(OF_BLENDMODE_MULTIPLY);
-    assets->panelRanking.draw(position);
+    assets->panelRankingBack.draw(position);
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
@@ -47,7 +47,6 @@ void PanelRanking::draw(){
         for (int i = 0; i < players->size(); i++) {
             drawPlayer(i);
         }
-        drawPlayer(0);
     ofPopMatrix();
     
     ofDisableBlendMode();

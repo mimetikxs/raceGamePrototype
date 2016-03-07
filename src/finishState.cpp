@@ -29,10 +29,6 @@ finishState::finishState(App *a):BaseState(a){
 
 
 void finishState::update(){
-    app->countDown.update();
-    if (app->countDown.isFinished()) {
-        next();
-    }
 };
 
 
@@ -44,10 +40,8 @@ void finishState::next(){
 
 void finishState::draw(){
     app->race.draw();
-    //app->race.drawInfo();
-    
-    // TODO:
-    ofDrawBitmapStringHighlight("FINISHED!", ofGetWidth()/2, ofGetHeight()/2);
+    app->panelTime.draw();
+    app->panelWinners.draw();
 };
 
 

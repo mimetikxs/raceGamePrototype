@@ -105,4 +105,6 @@ private:
     
     map<string, PlayerAttributes> playerAttributes;
     
+    Bike* getBike(ofImage* bikeImg);
+    
 };

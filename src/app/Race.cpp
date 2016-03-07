@@ -42,12 +42,6 @@ Race::Race()
     startingMarks.push_back(StartingMark(1105, 148, PI/2));
     startingMarks.push_back(StartingMark(1054, 211, PI/2));
     
-    // init bikes
-//    bikes.push_back(new Bike(&assets->bike1, &assets->bikeGlow));
-//    bikes.push_back(new Bike(&assets->bike2, &assets->bikeGlow));
-//    bikes.push_back(new Bike(&assets->bike3, &assets->bikeGlow));
-//    bikes.push_back(new Bike(&assets->bike4, &assets->bikeGlow));
-    
     // player attributes
     PlayerAttributes orangeRepsol;
     orangeRepsol.bikeImage = &assets->bike1;
@@ -103,7 +97,7 @@ void Race::setup(){
             
             int ranking = assets->getPlayerPosition(i);
             
-            Bike* bike = new Bike(bikeImage, &assets->bikeGlow);
+            Bike* bike = getBike(bikeImage);
             bikes.push_back(bike);
             players.push_back(new Player(name, bike, helmetImage, textColor, trailColor, ranking));
         }
@@ -410,4 +404,24 @@ void Race::onParameterChange(ofAbstractParameter& param){
             bike->powerbar.rotationStep = value;
         }
     }
+}
+
+
+Bike* Race::getBike(ofImage* bikeImg){
+    Bike* bike = new Bike(bikeImg, &assets->bikeGlow);
+    bike->acceleration = acceleration;
+    bike->friction = friction;
+    bike->maxSpeed = maxSpeed;
+    bike->rotationStep = rotationStep;
+    bike->setScale(scale);
+    bike->frontFriction = frontFriction;
+    bike->sidesFriction = sidesFriction;
+    bike->sidesRotation = sidesRotation;
+    bike->bikeHitFriction = bikeHitFriction;
+    // power ups
+    bike->powerbar.acceleration = pu_acceleration;
+    bike->powerbar.maxSpeed = pu_maxSpeed;
+    bike->powerbar.rotationStep = pu_rotationStep;
+    
+    return bike;
 }
