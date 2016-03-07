@@ -230,8 +230,6 @@ void Race::drawInfo(){
 
 
 void Race::updateBikes(){
-    //bikes[0]->bAccelerate = true; // debugging
-    
     for(auto bike : bikes){
         bike->update();
 
@@ -248,7 +246,6 @@ void Race::updateBikes(){
     }
     
     // check collisions
-    
     if (assets->useBikeCollisions()){
         for(int i = 0; i < bikes.size(); i++){
             Bike* bike1 = bikes[i];
@@ -269,7 +266,7 @@ void Race::checkStuck(){
             float rot = startingMarks[player->rankPos].rotation;
             bike->setPosition(pos.x, pos.y);
             bike->setRotation(rot);
-            player->completedLaps -= 1;
+            //player->completedLaps -= 1;
         }
     }
     

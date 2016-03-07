@@ -26,7 +26,7 @@ public:
     ,rankPos(_rankPos)
     ,completedLaps(0)
     ,lapPercent(0.0)
-    ,halfwayFlag(false)
+    ,halfwayFlag(true)
     ,lastLapTimeString("00:00:00")
     {}
     
