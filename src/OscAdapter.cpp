@@ -37,8 +37,8 @@ void OscAdapter::processOscMessage(ofxOscMessage msg){
         int player = ofToInt(msg.getArgAsString(0))  - 1;
         bool up = !msg.getArgAsBool(1);
         bool down = !msg.getArgAsBool(2);
-        bool right = !msg.getArgAsBool(3);
-        bool left = !msg.getArgAsBool(4);
+        bool left = !msg.getArgAsBool(3);
+        bool right = !msg.getArgAsBool(4);
         bool turbo = !msg.getArgAsBool(5);
         
         app->current_state->processRemoteCommand(player, up, down, left, right, turbo);

@@ -3,10 +3,10 @@
 
 calibrationState::calibrationState(App *a):BaseState(a){
     BaseState::initialize();
-    x = -21;
-    y = 39;
+    x = -22;
+    y = 33;
     sx = 1.01;
-    sy = 1.011;
+    sy = 1.004;
 };
 
 calibrationState::~calibrationState(){
@@ -41,10 +41,10 @@ void calibrationState::keypressed(int key){
             x += 1;
             break;
         case '+':
-            sy += 0.001;
+            sx += 0.001;
             break;
         case '-':
-            sy -= 0.001;
+            sx -= 0.001;
             break;
         case ' ':
             next();

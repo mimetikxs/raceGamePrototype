@@ -167,9 +167,9 @@ void Race::draw() {
         finishingLine.draw();
     }
     else{
-        ofTranslate(-21, 39);
+        ofTranslate(-22, 33);
         
-        ofScale(1.01, 1.011);
+        ofScale(1.01, 1.004);
         
         assets->backgroundImg.draw(0,0);
         powerupsManager.draw();

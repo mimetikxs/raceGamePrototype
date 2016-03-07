@@ -17,12 +17,12 @@
       "color" : "blue_repsol"
   },
   "player_2" : {
-      "name" : "Piloto 1",
+      "name" : "Miguel",
       "position" : 1,
       "color" : "magenta"
   },
   "player_3" : {
-      "name" : "Piloto 2",
+      "name" : "Kike",
       "position" : 0,
       "color" : "green"
   },
