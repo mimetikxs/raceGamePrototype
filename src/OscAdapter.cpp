@@ -26,6 +26,9 @@ void OscAdapter::update(ofEventArgs &args){
         receiver->getNextMessage(m);
         processOscMessage(m);
     }
+    
+    for(int i = 0; i < 4; i ++)
+        active[i] = false;
 }
 
 
@@ -45,6 +48,7 @@ void OscAdapter::processOscMessage(ofxOscMessage msg){
     
         cout << player << up << down << left << right << turbo << endl;
         
+        active[player] = true;
         
     }
     

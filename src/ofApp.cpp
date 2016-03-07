@@ -33,4 +33,14 @@ void ofApp::draw(){
    
     outputFbo.getTexture().draw(0,0, 1920/2, 1080/2);
     gui->draw();
+    
+    ofPushStyle();
+    for(int i = 0; i < 4; i ++){
+        if(osc->active[i])
+            ofSetColor(0, 255, 0);
+        else
+            ofSetColor(255, 0, 0);
+        ofDrawCircle(800 + i * 15, 10, 5);
+    }
+    ofPopStyle();
 }
