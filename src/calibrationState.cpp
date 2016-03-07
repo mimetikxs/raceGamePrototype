@@ -7,8 +7,6 @@ calibrationState::calibrationState(App *a):BaseState(a){
     y = 33;
     sx = 1.009;
     sy = 1.004;
-    px = -21;
-    py = 32;
 };
 
 calibrationState::~calibrationState(){

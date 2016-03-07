@@ -2,12 +2,13 @@
 #include "runningState.h"
 #include "startState.h"
 #include "calibrationState.h"
+#include "standbyState.h"
 
 
 void ofApp::setup(){
     
     app = new App();
-    app->setCurrentState(new calibrationState(app));
+    app->setCurrentState(new standbyState(app));
     osc = new OscAdapter(app);
     gui = new Gui(app);
     

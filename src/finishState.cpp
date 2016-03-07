@@ -53,9 +53,9 @@ void finishState::next(){
 
 void finishState::draw(){
     app->race.draw();
-    app->panelTime.draw();
     app->panelWinners.draw();
     app->panelCup.draw();
+    app->panelTime.draw();
 };
 
 

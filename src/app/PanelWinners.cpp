@@ -28,7 +28,7 @@ PanelWinners::PanelWinners(){
 
 void PanelWinners::setup(vector<Player *> * _players){
     players = _players;
-    position.set(1625, 615);
+    position.set(1625, 647);
 }
 
 
