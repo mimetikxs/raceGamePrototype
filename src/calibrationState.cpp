@@ -10,6 +10,8 @@ calibrationState::~calibrationState(){
 
 void calibrationState::draw(){
     Assets::getInstance()->collisionMap.draw(0, 0);
+    app->panelCup.draw();
+    app->panelRanking.draw();
 };
 
 void calibrationState::update(){};
