@@ -31,7 +31,8 @@ class Bike {
     
 public:
     
-    Bike(ofImage* image, ofImage* glow);
+    ~Bike();
+    Bike(ofImage* image, ofImage* glow, ofSoundPlayer* sound);
     
     void reset(ofVec2f pos, float rot);
     
@@ -85,6 +86,8 @@ public:
     PowerBar powerbar;
     void activatePower(){ powerbar.activate(); }
     void deactivatePower(){ powerbar.deactivate(); }
+    
+    ofSoundPlayer* motorSound;
     
 private:
     

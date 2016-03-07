@@ -41,8 +41,14 @@ void PanelPower::setup(vector<Player*>* _players){
 void PanelPower::draw(){
     // draw background
     ofEnableBlendMode(OF_BLENDMODE_MULTIPLY);
+    
+    ofPushStyle();
+    ofSetColor(255,200);
     assets->panelPower0.draw(position);
+    ofPopStyle();
+    
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
     assets->panelPower1.draw(position);
     
     // draw power bars

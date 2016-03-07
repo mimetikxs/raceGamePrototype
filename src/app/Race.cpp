@@ -37,17 +37,37 @@ Race::Race()
     ofAddListener(parametersPowerups.parameterChangedE(), this, &Race::onParameterChange);
     
     // init starting marks
-    // TODO: load from json
     startingMarks.push_back(StartingMark(1248, 148, PI/2));
     startingMarks.push_back(StartingMark(1202, 211, PI/2));
     startingMarks.push_back(StartingMark(1105, 148, PI/2));
     startingMarks.push_back(StartingMark(1054, 211, PI/2));
     
-    // init bikes
-    bikes.push_back(new Bike(&assets->bike1, &assets->bikeGlow));
-    bikes.push_back(new Bike(&assets->bike2, &assets->bikeGlow));
-    bikes.push_back(new Bike(&assets->bike3, &assets->bikeGlow));
-    bikes.push_back(new Bike(&assets->bike4, &assets->bikeGlow));
+    // player attributes
+    PlayerAttributes orangeRepsol;
+    orangeRepsol.bikeImage = &assets->bike1;
+    orangeRepsol.helmetImage = &assets->helmet1;
+    orangeRepsol.textColor = ofColor(255,145,0);
+    orangeRepsol.trailColor = ofColor(255,142,0);
+    PlayerAttributes blueRepsol;
+    blueRepsol.bikeImage = &assets->bike2;
+    blueRepsol.helmetImage = &assets->helmet2;
+    blueRepsol.textColor = ofColor(226,5,0);
+    blueRepsol.trailColor = ofColor(255,40,28);
+    PlayerAttributes magenta;
+    magenta.bikeImage = &assets->bike3;
+    magenta.helmetImage = &assets->helmet3;
+    magenta.textColor = ofColor(255,0,255);
+    magenta.trailColor = ofColor(115,0,189);
+    PlayerAttributes green;
+    green.bikeImage = &assets->bike4;
+    green.helmetImage = &assets->helmet4;
+    green.textColor = ofColor(46,211,0);
+    green.trailColor = ofColor(0,204,80);
+    
+    playerAttributes["orange_repsol"] = orangeRepsol;
+    playerAttributes["blue_repsol"] = blueRepsol;
+    playerAttributes["magenta"] = magenta;
+    playerAttributes["green"] = green;
 }
 
 
@@ -60,16 +80,28 @@ void Race::setup(){
     numLaps = 0;
     
     // init players
-    // TODO: get data from external source
+    bikes.clear();
     players.clear();
+    
     for(int i = 0; i < 4; i++){
         string name = assets->getPlayerName(i);
-        ofColor color = assets->getPlayerColor(i);
-        ofImage* helmet = &assets->getHelmet(i);
-        int ranking = assets->getPlayerPosition(i);
         
         if(name != ""){
-            players.push_back(new Player(name, bikes[i], helmet, color, ranking));
+            string attrName = assets->getPlayerAttributes(i);
+            PlayerAttributes& attributes = playerAttributes[attrName];
+            
+            ofImage* bikeImage = attributes.bikeImage;
+            ofImage* helmetImage = attributes.helmetImage;
+            ofColor textColor = attributes.textColor;
+            ofColor trailColor = attributes.trailColor;
+            
+            int ranking = assets->getPlayerPosition(i);
+            
+            cout << assets->motorSound[i].getVolume() << endl;
+            
+            Bike* bike = getBike(bikeImage, &assets->motorSound[i]);
+            bikes.push_back(bike);
+            players.push_back(new Player(name, bike, helmetImage, textColor, trailColor, ranking));
         }
     }
     
@@ -97,11 +129,6 @@ void Race::start() {
     rankLastTime = ofGetElapsedTimef();
     
     powerupsManager.reset();
-    
-//    TODO add logic to sound
-    for(int i = 0; i < 4; i ++){
-        assets->motorSound[i].play();
-    }
 }
 
 
@@ -133,16 +160,33 @@ void Race::draw() {
         assets->collisionMap.draw(0,0);
         powerupsManager.draw();
         for(auto & player : players){
-            player->bike->drawDebug(player->color);
+            player->bike->drawDebug(player->trailColor);
         }
         finishingLine.draw();
     }
     else{
         assets->backgroundImg.draw(0,0);
+        
         powerupsManager.draw();
         for(auto & player : players){
-            player->bike->draw(player->color);
+            player->bike->draw(player->trailColor);
         }
+        
+        // draw laps
+        ofEnableBlendMode(OF_BLENDMODE_MULTIPLY);
+        
+        ofPushStyle();
+        ofSetColor(255,200);
+        assets->panelLapsBack.draw(26, 100);
+        ofPopStyle();
+        
+        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+        
+        assets->panelLapsFront.draw(26, 100);
+        
+        string lapsString = "LAP " + ofToString(numLaps) + "/" + ofToString(assets->getNumLaps());
+        assets->presura25.drawString(lapsString, 98, 136);
+        ofDisableBlendMode();
     }
 }
 
@@ -157,14 +201,14 @@ void Race::drawInfo(){
         string completedLaps = "LAP: " + ofToString(player->completedLaps);
         string completedPct  = ofToString(player->lapPercent*100, 2) + "%";
         float x = 1244 + 120 * player->rankPos;
-        ofDrawBitmapStringHighlight(name, x, 918, player->color);
-        ofDrawBitmapStringHighlight(completedLaps, x, 938, player->color);
-        ofDrawBitmapStringHighlight(completedPct, x, 958, player->color);
+        ofDrawBitmapStringHighlight(name, x, 918, player->textColor);
+        ofDrawBitmapStringHighlight(completedLaps, x, 938, player->textColor);
+        ofDrawBitmapStringHighlight(completedPct, x, 958, player->textColor);
         
         // power bar
         float powerPct  = player->bike->powerbar.getPercent();
         ofPushStyle();
-        ofSetColor(player->color);
+        ofSetColor(player->textColor);
         ofNoFill();
         ofDrawRectangle(x-4, 968, 100, 15);
         ofFill();
@@ -244,6 +288,8 @@ void Race::updatePlayers(){
         float currentDistance = finishingLine.getDistance(bike->getFrontPos());
         if(prevDistance < 0  && currentDistance >= 0){
             player->completedLaps += 1;
+            player->lastLapTimeString = getElapsedTimeString();
+            
             assets->cheer.play();
 
             updateRanking();
@@ -372,4 +418,24 @@ void Race::onParameterChange(ofAbstractParameter& param){
             bike->powerbar.rotationStep = value;
         }
     }
+}
+
+
+Bike* Race::getBike(ofImage* bikeImg, ofSoundPlayer* motorSound){
+    Bike* bike = new Bike(bikeImg, &assets->bikeGlow, motorSound);
+    bike->acceleration = acceleration;
+    bike->friction = friction;
+    bike->maxSpeed = maxSpeed;
+    bike->rotationStep = rotationStep;
+    bike->setScale(scale);
+    bike->frontFriction = frontFriction;
+    bike->sidesFriction = sidesFriction;
+    bike->sidesRotation = sidesRotation;
+    bike->bikeHitFriction = bikeHitFriction;
+    // power ups
+    bike->powerbar.acceleration = pu_acceleration;
+    bike->powerbar.maxSpeed = pu_maxSpeed;
+    bike->powerbar.rotationStep = pu_rotationStep;
+    
+    return bike;
 }

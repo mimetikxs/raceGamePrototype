@@ -20,8 +20,8 @@ public:
     bool useBikeCollisions();
     
     string getPlayerName(int i);
-    ofColor getPlayerColor(int i);
     int getPlayerPosition(int i);
+    string getPlayerAttributes(int i);
     
     ofImage backgroundImg;
     ofImage collisionMap;
@@ -37,7 +37,6 @@ public:
     ofImage helmet2;
     ofImage helmet3;
     ofImage helmet4;
-    ofImage& getHelmet(int i);
     
     ofImage powerup1;
     ofImage powerup2;
@@ -53,15 +52,24 @@ public:
     ofImage panelPower1;
     ofImage powerBar;
     
-    ofImage panelRanking;
+    ofImage panelRankingBack;
+    ofImage panelRankingFront;
     
-    ofImage panelWinners;
-    ofImage cup;
+    ofImage panelWinnersBack;
+    ofImage panelWinnersFront;
     
-    ofImage panelLaps;
+    ofImage cupBack;
+    ofImage cupFront;
+    
+    ofImage panelLapsBack;
+    ofImage panelLapsFront;
     
     ofSoundPlayer motorSound[4];
     ofSoundPlayer cheer;
+    
+    ofTrueTypeFont presura25;
+    
+    ofVideoPlayer countdown;
 };
 
 #endif

@@ -19,8 +19,10 @@ void ofApp::setup(){
 void ofApp::draw(){
     
     outputFbo.begin();
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofClear(0);
     app->draw();
+    ofDisableBlendMode();
     outputFbo.end();
     
     syphon.publishTexture(&outputFbo.getTexture());

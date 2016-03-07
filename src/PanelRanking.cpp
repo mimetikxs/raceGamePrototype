@@ -24,8 +24,6 @@ PanelRanking::PanelRanking(){
     positions.push_back(ofVec2f(30,176));
     positions.push_back(ofVec2f(30,255));
     positions.push_back(ofVec2f(30,332));
-    
-    ofAddListener(ofEvents().keyPressed, this, &PanelRanking::keyPressed);
 }
 
 
@@ -39,17 +37,20 @@ void PanelRanking::setup(vector<Player *> * _players){
 void PanelRanking::draw(){
     // draw background
     ofEnableBlendMode(OF_BLENDMODE_MULTIPLY);
-    assets->panelRanking.draw(position);
+    
+    ofPushStyle();
+    ofSetColor(255,200);
+    assets->panelRankingBack.draw(position);
+    ofPopStyle();
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
     // draw players
     ofPushMatrix();
-    ofTranslate(position);
+        ofTranslate(position);
         for (int i = 0; i < players->size(); i++) {
             drawPlayer(i);
         }
-    drawPlayer(0);
     ofPopMatrix();
     
     ofDisableBlendMode();
@@ -65,7 +66,6 @@ void PanelRanking::drawPlayer(int index){
     ofVec2f p = positions[ranking];
     float x = p.x;
     float y = p.y;
-    
     
     if(ranking == 0){
         // hemlet

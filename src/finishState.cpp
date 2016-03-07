@@ -24,14 +24,23 @@ finishState::finishState(App *a):BaseState(a){
         bike->bTurnLeft = false;
         bike->bTurnRight = false;
         bike->bUsingPowerUp = false;
+        bike->bPullover = true;
     }
 };
 
 
 void finishState::update(){
-    app->countDown.update();
-    if (app->countDown.isFinished()) {
-        next();
+    //fadeout sound
+    for(auto bike : app->race.bikes){
+        float currentVol = bike->motorSound->getVolume();
+        float newVol = currentVol - 0.005;
+        
+        if(newVol > 0){
+            bike->motorSound->setVolume(newVol);
+        }else{
+            bike->motorSound->setVolume(0);
+            bike->motorSound->setPaused(true);
+        }
     }
 };
 
@@ -44,10 +53,9 @@ void finishState::next(){
 
 void finishState::draw(){
     app->race.draw();
-    //app->race.drawInfo();
-    
-    // TODO:
-    ofDrawBitmapStringHighlight("FINISHED!", ofGetWidth()/2, ofGetHeight()/2);
+    app->panelTime.draw();
+    app->panelWinners.draw();
+    app->panelCup.draw();
 };
 
 

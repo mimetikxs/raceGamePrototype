@@ -18,7 +18,7 @@
 #include "assets.h"
 #include "PowerUp.h"
 #include "PowerUpsManager.h"
-
+#include "PlayerAttributes.h"
 
 
 class StartingMark{
@@ -103,4 +103,7 @@ private:
     void checkStuck();
     string getElapsedTimeString();
     
+    map<string, PlayerAttributes> playerAttributes;
+    
+    Bike* getBike(ofImage* bikeImg, ofSoundPlayer* motorSound);
 };

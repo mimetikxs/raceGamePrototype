@@ -36,6 +36,7 @@ void runningState::draw(){
     app->race.draw();
     app->panelPower.draw();
     app->panelRanking.draw();
+    app->panelTime.draw();
     //app->race.drawInfo();
 };
 
