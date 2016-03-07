@@ -52,12 +52,12 @@ Race::Race()
     blueRepsol.bikeImage = &assets->bike2;
     blueRepsol.helmetImage = &assets->helmet2;
     blueRepsol.textColor = ofColor(226,5,0);
-    blueRepsol.trailColor = ofColor(255,40,28);
+    blueRepsol.trailColor = ofColor(255,16,3);
     PlayerAttributes magenta;
     magenta.bikeImage = &assets->bike3;
     magenta.helmetImage = &assets->helmet3;
     magenta.textColor = ofColor(255,0,255);
-    magenta.trailColor = ofColor(115,0,189);
+    magenta.trailColor = ofColor(235,0,180);
     PlayerAttributes green;
     green.bikeImage = &assets->bike4;
     green.helmetImage = &assets->helmet4;
@@ -99,7 +99,7 @@ void Race::setup(){
             
             cout << assets->motorSound[i].getVolume() << endl;
             
-            Bike* bike = getBike(bikeImage, &assets->motorSound[i]);
+            Bike* bike = getBike(bikeImage, &assets->motorSound[i], trailColor);
             bikes.push_back(bike);
             players.push_back(new Player(name, bike, helmetImage, textColor, trailColor, ranking));
         }
@@ -428,8 +428,8 @@ void Race::onParameterChange(ofAbstractParameter& param){
 }
 
 
-Bike* Race::getBike(ofImage* bikeImg, ofSoundPlayer* motorSound){
-    Bike* bike = new Bike(bikeImg, &assets->bikeGlow, motorSound);
+Bike* Race::getBike(ofImage* bikeImg, ofSoundPlayer* motorSound, ofColor trailColor){
+    Bike* bike = new Bike(bikeImg, &assets->bikeGlow, motorSound, trailColor);
     bike->acceleration = acceleration;
     bike->friction = friction;
     bike->maxSpeed = maxSpeed;

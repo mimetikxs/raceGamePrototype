@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "PowerBar.h"
+#include "Trail.h"
 
 
 class CollisionPoint {
@@ -32,7 +33,7 @@ class Bike {
 public:
     
     ~Bike();
-    Bike(ofImage* image, ofImage* glow, ofSoundPlayer* sound);
+    Bike(ofImage* image, ofImage* glow, ofSoundPlayer* sound, ofColor trailColor);
     
     void reset(ofVec2f pos, float rot);
     
@@ -110,4 +111,7 @@ private:
     vector<CollisionPoint> collisionPoints;
     // bike-bike collision
     vector<CollisionPoint> collisionCircles;
+    
+    Trail trail;
+    ofColor trailColor;
 };

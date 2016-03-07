@@ -42,8 +42,8 @@ void runningState::draw(){
 
 
 void runningState::keypressed(int key){
-    Bike& bike1 = *app->race.bikes[0];
-    Bike& bike2 = *app->race.bikes[1];
+    Bike& bike1 = *app->race.bikes[2];
+    Bike& bike2 = *app->race.bikes[3];
     
     switch (key) {
         case OF_KEY_UP:
@@ -97,8 +97,8 @@ void runningState::keypressed(int key){
 
 
 void runningState::keyReleased(int key){
-    Bike& bike1 = *app->race.bikes[0];
-    Bike& bike2 = *app->race.bikes[1];
+    Bike& bike1 = *app->race.bikes[2];
+    Bike& bike2 = *app->race.bikes[3];
     
     switch (key) {
         case OF_KEY_UP:
