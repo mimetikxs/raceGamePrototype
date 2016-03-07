@@ -17,10 +17,11 @@ Bike::~Bike(){
 }
 
 
-Bike::Bike(ofImage* img, ofImage* _glow, ofSoundPlayer* sound){
+Bike::Bike(ofImage* img, ofImage* _glow, ofSoundPlayer* sound, ofColor _trailColor){
     image = img;
     glow = _glow;
     motorSound = sound;
+    trailColor = _trailColor;
     
     acceleration = 0.4;
     friction = 0.85;
@@ -66,6 +67,8 @@ Bike::Bike(ofImage* img, ofImage* _glow, ofSoundPlayer* sound){
     collisionCircles.push_back(CollisionPoint(0, -halfLength + halfWidth, halfWidth)); // back
     collisionCircles.push_back(CollisionPoint(0, 0, halfWidth));                       // center
     collisionCircles.push_back(CollisionPoint(0, halfLength - halfWidth, halfWidth));  // front
+    
+    trail.color = trailColor;
 }
 
 
@@ -137,6 +140,9 @@ void Bike::update(){
     velocity.set(direction * speed);
     
     position += velocity;
+    
+    //trail.update(localToGlobal(collisionCircles[0].position));
+    trail.update(position);
     
     powerbar.update();
 }
@@ -254,6 +260,7 @@ ofVec2f Bike::localToGlobal(ofVec2f& localPoint){
 
 
 void Bike::draw(ofColor color){
+    trail.draw();
     
     ofPushMatrix();
     ofTranslate(position);
@@ -273,7 +280,6 @@ void Bike::draw(ofColor color){
     image->unbind();
     
     ofPopMatrix();
-    
 }
 
 

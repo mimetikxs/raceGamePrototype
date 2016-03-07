@@ -105,5 +105,5 @@ private:
     
     map<string, PlayerAttributes> playerAttributes;
     
-    Bike* getBike(ofImage* bikeImg, ofSoundPlayer* motorSound);
+    Bike* getBike(ofImage* bikeImg, ofSoundPlayer* motorSound, ofColor trailColor);
 };
