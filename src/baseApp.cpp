@@ -52,7 +52,7 @@ void BaseApp::draw(){
     ofPushStyle();
     ofPushMatrix();
     
-    ofSetWindowShape( assets->getWidth() * assets->getScale(),  assets->getHeight() * assets->getScale());
+//    ofSetWindowShape( assets->getWidth() * assets->getScale(),  assets->getHeight() * assets->getScale());
     ofScale(assets->getScale(), assets->getScale());
     
     if(current_state)
