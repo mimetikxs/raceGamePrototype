@@ -7,24 +7,24 @@
   "scale" : 1,
   "num_laps" : 5,
   "player_0" : {
-    "position" : 2,
-    "name" : "Pedrosa",
-    "color" : "orange"
-  },
-  "player_1" : {
-      "position" : 3,
-      "name" : "Marquez",
-      "color" : "blue"
-  },
-  "player_2" : {
       "position" : 0,
-      "name" : "Jugador 1",
+      "name" : "Laura",
       "color" : "magenta"
   },
-  "player_3" : {
+  "player_1" : {
       "position" : 1,
-      "name" : "Jugador 2",
+      "name" : "J. Manuel",
       "color" : "green"
+  },
+  "player_2" : {
+    "position" : 2,
+    "name" : "Dani",
+    "color" : "orange"
+  },
+  "player_3" : {
+      "position" : 3,
+      "name" : "Marc",
+      "color" : "blue"
   },
   "collisions": true
  }

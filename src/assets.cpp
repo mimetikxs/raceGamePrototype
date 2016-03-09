@@ -55,8 +55,9 @@ void Assets::loadAssets(){
     countdownSound.load("countdown.mp3");
     countdownSound.setVolume(0.1);
     fanfare.load("fanfare.wav");
-    fanfare.setVolume(0.5);
+    fanfare.setVolume(0.4);
     go.load("go.wav");
+    go.setVolume(0.6);
     
     
     presura25.load("GT-Pressura-Mono.otf", 25, true, true);
