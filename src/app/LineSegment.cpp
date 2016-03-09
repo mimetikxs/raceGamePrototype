@@ -45,6 +45,17 @@ void LineSegment::draw() {
 }
 
 
+bool LineSegment::intersects(ofVec2f position, ofVec2f velocity){
+    ofVec2f point( getIntersection(position, velocity) );
+    ofVec2f v1( point - a );
+    ofVec2f v2( point - b );
+    float segmentLength = delta.length();
+    float v1Length = v1.length();
+    float v2Length = v2.length();
+    return !(v1Length > segmentLength || v2Length > segmentLength);
+}
+
+
 ofVec2f LineSegment::getIntersection(ofVec2f position, ofVec2f velocity) {
     ofVec2f v1( velocity );     // motion vector
     ofVec2f v2( delta );        // colision line
@@ -58,6 +69,8 @@ ofVec2f LineSegment::getIntersection(ofVec2f position, ofVec2f velocity) {
     float t = perpProduct2 / perpProduct1;
     
     ofVec2f intersection( position + velocity * t );
+    
+    cout << intersection << endl;
     
     return intersection;
 }

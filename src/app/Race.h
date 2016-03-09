@@ -49,8 +49,6 @@ public:
     void start();
     bool isFinised(){ return bFinished; }
     
-    LineSegment finishingLine;
-    
     vector<StartingMark> startingMarks;
     
     vector<Bike*> bikes;
@@ -102,6 +100,9 @@ private:
     void updateTimer();
     void checkStuck();
     string getElapsedTimeString();
+    
+    LineSegment finishingLine;
+    LineSegment halfwayLine;
     
     map<string, PlayerAttributes> playerAttributes;
     

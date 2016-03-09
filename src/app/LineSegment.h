@@ -27,6 +27,7 @@ public:
     
     void draw();
     
+    bool intersects(ofVec2f position, ofVec2f velocity);
     ofVec2f getIntersection(ofVec2f position, ofVec2f velocity);
     float getDistance(ofVec2f point);
 };

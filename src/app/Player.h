@@ -26,6 +26,7 @@ public:
     ,rankPos(_rankPos)
     ,completedLaps(0)
     ,lapPercent(0.0)
+    ,halfwayFlag(true)
     ,lastLapTimeString("00:00:00")
     {}
     
@@ -39,6 +40,7 @@ public:
     int rankPos;           // ranking of this player in the race (0 based)
     int completedLaps;     // number of completed laps
     float lapPercent;
+    bool halfwayFlag;
     
     string lastLapTimeString;
     

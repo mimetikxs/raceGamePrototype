@@ -12,6 +12,7 @@
 
 Race::Race()
 : finishingLine(1333, 79, 1333, 286)
+, halfwayLine(507, 819, 507, 1042)
 {
     assets = Assets::getInstance();
     
@@ -165,6 +166,7 @@ void Race::draw() {
             player->bike->drawDebug(player->trailColor);
         }
         finishingLine.draw();
+        halfwayLine.draw();
     }
     else{
         
@@ -228,8 +230,6 @@ void Race::drawInfo(){
 
 
 void Race::updateBikes(){
-    //bikes[0]->bAccelerate = true; // debugging
-    
     for(auto bike : bikes){
         bike->update();
 
@@ -246,7 +246,6 @@ void Race::updateBikes(){
     }
     
     // check collisions
-    
     if (assets->useBikeCollisions()){
         for(int i = 0; i < bikes.size(); i++){
             Bike* bike1 = bikes[i];
@@ -267,7 +266,7 @@ void Race::checkStuck(){
             float rot = startingMarks[player->rankPos].rotation;
             bike->setPosition(pos.x, pos.y);
             bike->setRotation(rot);
-            player->completedLaps -= 1;
+            //player->completedLaps -= 1;
         }
     }
     
@@ -289,17 +288,31 @@ void Race::updatePlayers(){
     for(auto player : players){
         Bike * bike = player->bike;
         
-        // check if line crossed
         ofVec2f prevPos = bike->getFrontPos() - bike->getVelocity();
+        
+        // check if finish line crossed
         float prevDistance = finishingLine.getDistance(prevPos);
         float currentDistance = finishingLine.getDistance(bike->getFrontPos());
-        if(prevDistance < 0  && currentDistance >= 0){
+        if(prevDistance < 0
+           && currentDistance >= 0
+           && player->halfwayFlag == true)
+        {
             player->completedLaps += 1;
             player->lastLapTimeString = getElapsedTimeString();
+            player->halfwayFlag = false;
+            updateRanking();
             
             assets->cheer.play();
-
-            updateRanking();
+        }
+        
+        // check if helfway line crossed
+        prevDistance = halfwayLine.getDistance(prevPos);
+        currentDistance = halfwayLine.getDistance(bike->getFrontPos());
+        if(prevDistance > 0
+           && currentDistance <= 0)
+        {
+            player->halfwayFlag = true;
+            
         }
         
         const ofVec2f p = bike->getPosition();
